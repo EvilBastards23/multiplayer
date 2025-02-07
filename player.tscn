@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://djngixdg8jdep"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_xgo8i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cfy25"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_huxvo"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1vag2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jixm"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t1j5p"]
+
+[node name="player" type="CharacterBody3D"]
+script = ExtResource("1_xgo8i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 1.74846e-07, 0, -1.74846e-07, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_cfy25")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_huxvo")
+mesh = SubResource("CapsuleMesh_1vag2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0938934, 0, 0, 0, -1.50168e-09, -0.0816472, 0, 0.0343544, -3.56891e-09, -0.217216, 0.455, -0.447663)
+material_override = SubResource("StandardMaterial3D_1jixm")
+mesh = SubResource("CylinderMesh_t1j5p")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0938934, 0, 0, 0, -1.50168e-09, -0.0816472, 0, 0.0343544, -3.56891e-09, 0.230131, 0.455, -0.447663)
+material_override = SubResource("StandardMaterial3D_1jixm")
+mesh = SubResource("CylinderMesh_t1j5p")
