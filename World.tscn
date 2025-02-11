@@ -1,13 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://6n866ulsstce"]
+[gd_scene load_steps=5 format=3 uid="uid://6n866ulsstce"]
 
 [ext_resource type="PackedScene" uid="uid://b8a1x0sctkhh2" path="res://map.tscn" id="1_sd7g1"]
+[ext_resource type="Script" path="res://World.gd" id="3_t4t2d"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="4_k1fxd"]
+[ext_resource type="PackedScene" uid="uid://b8wg07vy8tkfw" path="res://lobby.tscn" id="4_pwar0"]
 
-[node name="Node3D" type="Node3D"]
+[node name="World" type="Node3D"]
+script = ExtResource("3_t4t2d")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Node3D" parent="." instance=ExtResource("1_sd7g1")]
+[node name="map" parent="." instance=ExtResource("1_sd7g1")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="camera1" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.34958, 7.33138, 32.6566)
+script = ExtResource("4_k1fxd")
+follow_speed = 6.0
+height = 12.0
+distance = 7.0
+angle = -30.0
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player.tscn")
+spawn_path = NodePath("..")
+
+[node name="camera2" type="Camera3D" parent="."]
+script = ExtResource("4_k1fxd")
+follow_speed = 6.0
+height = 12.0
+distance = 7.0
+angle = -30.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Lobby" parent="CanvasLayer" instance=ExtResource("4_pwar0")]
+script = null

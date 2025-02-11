@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://djngixdg8jdep"]
+[gd_scene load_steps=8 format=3 uid="uid://djngixdg8jdep"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_xgo8i"]
 
@@ -14,7 +14,16 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_t1j5p"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nl71h"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="player" type="CharacterBody3D"]
+collision_layer = 0
 script = ExtResource("1_xgo8i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -34,3 +43,6 @@ mesh = SubResource("CylinderMesh_t1j5p")
 transform = Transform3D(0.0938934, 0, 0, 0, -1.50168e-09, -0.0816472, 0, 0.0343544, -3.56891e-09, 0.230131, 0.455, -0.447663)
 material_override = SubResource("StandardMaterial3D_1jixm")
 mesh = SubResource("CylinderMesh_t1j5p")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_nl71h")
