@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://6n866ulsstce"]
+[gd_scene load_steps=6 format=3 uid="uid://6n866ulsstce"]
 
 [ext_resource type="PackedScene" uid="uid://b8a1x0sctkhh2" path="res://map.tscn" id="1_sd7g1"]
+[ext_resource type="PackedScene" uid="uid://dqb35wrau8ots" path="res://enemy_type_1.tscn" id="2_naear"]
 [ext_resource type="Script" path="res://World.gd" id="3_t4t2d"]
 [ext_resource type="Script" path="res://camera_3d.gd" id="4_k1fxd"]
 [ext_resource type="PackedScene" uid="uid://b8wg07vy8tkfw" path="res://lobby.tscn" id="4_pwar0"]
@@ -9,10 +10,11 @@
 script = ExtResource("3_t4t2d")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
 [node name="map" parent="." instance=ExtResource("1_sd7g1")]
+script = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
@@ -25,7 +27,7 @@ distance = 7.0
 angle = -30.0
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://player.tscn")
+_spawnable_scenes = PackedStringArray("res://player.tscn", "res://bolder.tscn")
 spawn_path = NodePath("..")
 
 [node name="camera2" type="Camera3D" parent="."]
@@ -39,3 +41,7 @@ angle = -30.0
 
 [node name="Lobby" parent="CanvasLayer" instance=ExtResource("4_pwar0")]
 script = null
+metadata/_edit_use_anchors_ = true
+
+[node name="enemy_type_1" parent="." instance=ExtResource("2_naear")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29887, 4.00608, 10.475)
