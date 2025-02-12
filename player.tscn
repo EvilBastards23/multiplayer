@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://djngixdg8jdep"]
+[gd_scene load_steps=10 format=3 uid="uid://djngixdg8jdep"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_xgo8i"]
+[ext_resource type="Script" path="res://attack_component.gd" id="2_tcrlo"]
+[ext_resource type="PackedScene" uid="uid://dqlinbxlyhskf" path="res://bolder.tscn" id="3_r3iiw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cfy25"]
 
@@ -46,3 +48,8 @@ mesh = SubResource("CylinderMesh_t1j5p")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_nl71h")
+
+[node name="shoot_component" type="Node" parent="."]
+script = ExtResource("2_tcrlo")
+bolder_speed = 40.0
+bolder_scene = ExtResource("3_r3iiw")
