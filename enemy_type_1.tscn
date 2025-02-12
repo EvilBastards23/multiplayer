@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy6bfrn7ujx0m"]
+[gd_scene load_steps=9 format=3 uid="uid://cy6bfrn7ujx0m"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_xblyy"]
+[ext_resource type="Script" path="res://health_component.gd" id="2_ao77u"]
+[ext_resource type="PackedScene" uid="uid://b2pdyhbk85tg8" path="res://healt_bar.tscn" id="3_8mhog"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dnb1l"]
 albedo_color = Color(0, 0, 0, 1)
@@ -17,6 +19,10 @@ properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4qcrn"]
+radius = 0.753648
+height = 1.5073
+
 [node name="enemy_type_1" type="CharacterBody3D"]
 script = ExtResource("1_xblyy")
 
@@ -31,3 +37,16 @@ shape = SubResource("BoxShape3D_gnbwn")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_na7qv")
+
+[node name="health_component" type="Node" parent="."]
+script = ExtResource("2_ao77u")
+
+[node name="healt_bar" parent="." node_paths=PackedStringArray("player", "health_component") instance=ExtResource("3_8mhog")]
+player = NodePath("..")
+health_component = NodePath("../health_component")
+
+[node name="hit_box" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hit_box"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.74846e-07, 0, -1.74846e-07, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_4qcrn")
