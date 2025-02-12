@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-[gd_scene load_steps=6 format=3 uid="uid://dqb35wrau8ots"]
+[gd_scene load_steps=6 format=3 uid="uid://cy6bfrn7ujx0m"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_xblyy"]
-=======
-[gd_scene load_steps=4 format=3 uid="uid://dqb35wrau8ots"]
->>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dnb1l"]
 albedo_color = Color(0, 0, 0, 1)
@@ -13,7 +9,6 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gnbwn"]
 
-<<<<<<< HEAD
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_na7qv"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
@@ -24,9 +19,6 @@ properties/1/replication_mode = 1
 
 [node name="enemy_type_1" type="CharacterBody3D"]
 script = ExtResource("1_xblyy")
-=======
-[node name="enemy_type_1" type="CharacterBody3D"]
->>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_dnb1l")
@@ -34,11 +26,8 @@ mesh = SubResource("BoxMesh_rafec")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_gnbwn")
-<<<<<<< HEAD
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_na7qv")
-=======
->>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef

@@ -1,6 +1,5 @@
 extends Node
 
-<<<<<<< HEAD
 signal health_changed(new_hp: int, max_hp: int)
 
 @export var max_hp: int = 100
@@ -49,11 +48,3 @@ func decrease_max_hp(amount: int) -> void:
 	max_hp = max(min_hp, max_hp - amount)
 	current_hp = min(current_hp, max_hp)  # Prevent exceeding max HP
 	update_health.rpc(current_hp, max_hp)  # Sync across network
-=======
-@export var max_hp:int
-var current_hp : int
-
-func _ready() -> void:
-	current_hp = max_hp
-	
->>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef

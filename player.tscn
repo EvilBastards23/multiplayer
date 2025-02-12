@@ -1,17 +1,10 @@
-<<<<<<< HEAD
-[gd_scene load_steps=12 format=3 uid="uid://djngixdg8jdep"]
-=======
-[gd_scene load_steps=10 format=3 uid="uid://djngixdg8jdep"]
->>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef
+[gd_scene load_steps=12 format=3 uid="uid://d2fdrmkwh2jc5"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_xgo8i"]
 [ext_resource type="Script" path="res://attack_component.gd" id="2_tcrlo"]
-[ext_resource type="PackedScene" uid="uid://dqlinbxlyhskf" path="res://bolder.tscn" id="3_r3iiw"]
-<<<<<<< HEAD
+[ext_resource type="PackedScene" uid="uid://cim3r2iuo7q6s" path="res://bolder.tscn" id="3_r3iiw"]
 [ext_resource type="PackedScene" uid="uid://b2pdyhbk85tg8" path="res://healt_bar.tscn" id="4_vd4qd"]
 [ext_resource type="Script" path="res://health_component.gd" id="5_01ysa"]
-=======
->>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cfy25"]
 
@@ -62,7 +55,6 @@ replication_config = SubResource("SceneReplicationConfig_nl71h")
 script = ExtResource("2_tcrlo")
 bolder_speed = 40.0
 bolder_scene = ExtResource("3_r3iiw")
-<<<<<<< HEAD
 
 [node name="healt_bar" parent="." node_paths=PackedStringArray("player", "health_component") instance=ExtResource("4_vd4qd")]
 anchors_preset = 8
@@ -87,5 +79,3 @@ script = ExtResource("5_01ysa")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hit_box"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.74846e-07, 0, -1.74846e-07, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_cfy25")
-=======
->>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef

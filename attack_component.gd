@@ -41,12 +41,8 @@ func summon_bolder_network(spawn_position: Vector3, forward_direction: Vector3) 
 func create_boulder(spawn_position: Vector3, forward_direction: Vector3) -> void:
 	# Instantiate the boulder scene
 	var bolder = bolder_scene.instantiate()
-<<<<<<< HEAD
 	bolder.set_direction(forward_direction,20)
 	
-=======
-	bolder.set_direction(forward_direction)
->>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef
 
 	# Set the boulder's position
 	bolder.global_position = spawn_position
