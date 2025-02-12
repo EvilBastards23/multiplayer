@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+[gd_scene load_steps=6 format=3 uid="uid://dqlinbxlyhskf"]
+=======
 [gd_scene load_steps=5 format=3 uid="uid://dqlinbxlyhskf"]
+>>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef
 
 [ext_resource type="Script" path="res://bolder.gd" id="1_25njx"]
 
@@ -10,15 +14,28 @@ emission_energy_multiplier = 16.0
 emission_on_uv2 = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_h8xb8"]
+<<<<<<< HEAD
+lightmap_size_hint = Vector2i(316, 80)
+radius = 7.03
+height = 14.951
+=======
 radius = 10.0
 height = 10.0
+>>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_35p28"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
+<<<<<<< HEAD
+[sub_resource type="SphereShape3D" id="SphereShape3D_blsun"]
+radius = 0.981579
+
+[node name="Bolder" type="CharacterBody3D" groups=["bullet"]]
+=======
 [node name="Bolder" type="CharacterBody3D"]
+>>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef
 transform = Transform3D(15.0638, 0, 0, 0, 11.7944, 0, 0, 0, 15.2383, 0, 0, 0)
 script = ExtResource("1_25njx")
 bolder_speed = 40.0
@@ -30,3 +47,9 @@ mesh = SubResource("SphereMesh_h8xb8")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_35p28")
+<<<<<<< HEAD
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_blsun")
+=======
+>>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef

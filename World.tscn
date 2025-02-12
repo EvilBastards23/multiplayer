@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://6n866ulsstce"]
+[gd_scene load_steps=6 format=3 uid="uid://6n866ulsstce"]
 
 [ext_resource type="PackedScene" uid="uid://b8a1x0sctkhh2" path="res://map.tscn" id="1_sd7g1"]
+[ext_resource type="PackedScene" uid="uid://dqb35wrau8ots" path="res://enemy_type_1.tscn" id="2_naear"]
 [ext_resource type="Script" path="res://World.gd" id="3_t4t2d"]
 [ext_resource type="Script" path="res://camera_3d.gd" id="4_k1fxd"]
 [ext_resource type="PackedScene" uid="uid://b8wg07vy8tkfw" path="res://lobby.tscn" id="4_pwar0"]
@@ -40,3 +41,7 @@ angle = -30.0
 
 [node name="Lobby" parent="CanvasLayer" instance=ExtResource("4_pwar0")]
 script = null
+metadata/_edit_use_anchors_ = true
+
+[node name="enemy_type_1" parent="." instance=ExtResource("2_naear")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29887, 4.00608, 10.475)

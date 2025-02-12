@@ -1,8 +1,17 @@
+<<<<<<< HEAD
+[gd_scene load_steps=12 format=3 uid="uid://djngixdg8jdep"]
+=======
 [gd_scene load_steps=10 format=3 uid="uid://djngixdg8jdep"]
+>>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef
 
 [ext_resource type="Script" path="res://player.gd" id="1_xgo8i"]
 [ext_resource type="Script" path="res://attack_component.gd" id="2_tcrlo"]
 [ext_resource type="PackedScene" uid="uid://dqlinbxlyhskf" path="res://bolder.tscn" id="3_r3iiw"]
+<<<<<<< HEAD
+[ext_resource type="PackedScene" uid="uid://b2pdyhbk85tg8" path="res://healt_bar.tscn" id="4_vd4qd"]
+[ext_resource type="Script" path="res://health_component.gd" id="5_01ysa"]
+=======
+>>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cfy25"]
 
@@ -24,7 +33,7 @@ properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="player" type="CharacterBody3D"]
+[node name="player" type="CharacterBody3D" groups=["players"]]
 collision_layer = 0
 script = ExtResource("1_xgo8i")
 
@@ -53,3 +62,30 @@ replication_config = SubResource("SceneReplicationConfig_nl71h")
 script = ExtResource("2_tcrlo")
 bolder_speed = 40.0
 bolder_scene = ExtResource("3_r3iiw")
+<<<<<<< HEAD
+
+[node name="healt_bar" parent="." node_paths=PackedStringArray("player", "health_component") instance=ExtResource("4_vd4qd")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -538.0
+offset_top = -292.0
+offset_right = -498.0
+offset_bottom = -252.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+player = NodePath("..")
+health_component = NodePath("../health_component")
+
+[node name="health_component" type="Node" parent="."]
+script = ExtResource("5_01ysa")
+
+[node name="hit_box" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hit_box"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.74846e-07, 0, -1.74846e-07, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_cfy25")
+=======
+>>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef

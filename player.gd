@@ -14,6 +14,10 @@ func _enter_tree() -> void:
 
 # Called when the node is ready (after being added to the scene)
 func _ready() -> void:
+<<<<<<< HEAD
+	
+=======
+>>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef
 	# If this object has multiplayer authority (host or the player controlling the character)
 	if is_multiplayer_authority():
 		# Get the camera for the player from the parent node (camera1 for host or first player)
@@ -30,10 +34,16 @@ func _ready() -> void:
 		
 	# Set initial position of the player
 	position = Vector3(0, 0.852, 18.223)
+<<<<<<< HEAD
+	$hit_box.connect("body_entered",take_damage)
+	
+
+=======
 
 	# Placeholder for input event handling (looks like it was intended but is not used)
 	input_event
 
+>>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef
 # Called every physics frame (for handling movement and physics)
 func _physics_process(delta: float) -> void:
 	# Add gravity if the player has multiplayer authority (host or main player)
@@ -90,3 +100,13 @@ func _physics_process(delta: float) -> void:
 			var look_at_pos = ray_result.position  # Get the position where the ray hit
 			look_at_pos.y = global_position.y  # Keep the look direction on the same horizontal plane as the player
 			look_at(look_at_pos)  # Rotate the character to face the look-at position
+<<<<<<< HEAD
+			
+func take_damage(body)->void:
+	if body.is_in_group("bullet"):
+		
+		print("taking damage")
+		$health_component.take_damage(body.damage)
+		body.queue_free()
+=======
+>>>>>>> ae4590d395038bf44e5e93bf5056f5b2035332ef
