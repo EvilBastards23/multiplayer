@@ -42,6 +42,9 @@ angle = -30.0
 [node name="Lobby" parent="CanvasLayer" instance=ExtResource("4_pwar0")]
 script = null
 metadata/_edit_use_anchors_ = true
+<<<<<<< HEAD
 
 [node name="enemy_type_1" parent="." instance=ExtResource("2_naear")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29887, 4.00608, 10.475)
+=======
+>>>>>>> ece3cb5a5642b03da83936a916c5939a513a8869

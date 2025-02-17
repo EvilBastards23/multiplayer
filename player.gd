@@ -97,3 +97,7 @@ func take_damage(body)->void:
 		print("taking damage")
 		$health_component.take_damage(body.damage)
 		body.queue_free()
+<<<<<<< HEAD
+=======
+		
+>>>>>>> ece3cb5a5642b03da83936a916c5939a513a8869

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=6 format=3 uid="uid://dqlinbxlyhskf"]
+=======
+[gd_scene load_steps=6 format=3 uid="uid://cim3r2iuo7q6s"]
+>>>>>>> ece3cb5a5642b03da83936a916c5939a513a8869
 
 [ext_resource type="Script" path="res://bolder.gd" id="1_25njx"]
 
