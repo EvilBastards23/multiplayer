@@ -63,10 +63,13 @@ func _physics_process(delta: float) -> void:
 		if direction:
 			velocity.x = direction.x * SPEED  # Horizontal movement in the X-axis
 			velocity.z = direction.z * SPEED  # Horizontal movement in the Z-axis
+			$AnimationPlayer.play("Run")
+			
 		else:
 			# If no input, gradually decelerate velocity towards 0 on the X and Z axes
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
+			$AnimationPlayer.play("Idle")
 
 		# Apply the movement to the character, including physics and collision handling
 		move_and_slide()
@@ -97,7 +100,4 @@ func take_damage(body)->void:
 		print("taking damage")
 		$health_component.take_damage(body.damage)
 		body.queue_free()
-<<<<<<< HEAD
-=======
 		
->>>>>>> ece3cb5a5642b03da83936a916c5939a513a8869

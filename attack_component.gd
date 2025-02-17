@@ -14,7 +14,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Check if the summon input is pressed
 	if player.is_multiplayer_authority():
-		if Input.is_action_just_pressed("summon_bolder"):
+		if Input.is_action_just_pressed("summon_boulder"):
 			summon_bolder()
 
 # Summon the boulder and shoot it in the direction the player is facing
@@ -41,7 +41,6 @@ func summon_bolder_network(spawn_position: Vector3, forward_direction: Vector3) 
 func create_boulder(spawn_position: Vector3, forward_direction: Vector3) -> void:
 	# Instantiate the boulder scene
 	var bolder = bolder_scene.instantiate()
-	bolder.set_direction(forward_direction,20)
 	
 
 	# Set the boulder's position
@@ -49,3 +48,4 @@ func create_boulder(spawn_position: Vector3, forward_direction: Vector3) -> void
 
 	# Add the boulder to the scene (root or specific node)
 	get_tree().root.add_child(bolder)
+	bolder.set_direction(forward_direction,20)

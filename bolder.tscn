@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-[gd_scene load_steps=6 format=3 uid="uid://dqlinbxlyhskf"]
-=======
 [gd_scene load_steps=6 format=3 uid="uid://cim3r2iuo7q6s"]
->>>>>>> ece3cb5a5642b03da83936a916c5939a513a8869
 
-[ext_resource type="Script" path="res://bolder.gd" id="1_25njx"]
+[ext_resource type="Script" uid="uid://cqkpvxe6mp5wf" path="res://bolder.gd" id="1_25njx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7muu"]
 albedo_color = Color(0, 0, 0, 1)
@@ -28,6 +24,8 @@ radius = 0.981579
 
 [node name="Bolder" type="CharacterBody3D" groups=["bullet"]]
 transform = Transform3D(15.0638, 0, 0, 0, 11.7944, 0, 0, 0, 15.2383, 0, 0, 0)
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_25njx")
 bolder_speed = 40.0
 

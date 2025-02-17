@@ -10,7 +10,7 @@ func _ready() -> void:
 		texture_progress_bar.max_value = health_component.max_hp
 		texture_progress_bar.value = health_component.current_hp
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	if health_component:
 		texture_progress_bar.value = health_component.current_hp

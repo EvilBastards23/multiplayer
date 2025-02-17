@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=3 format=3 uid="uid://b8a1x0sctkhh2"]
-=======
 [gd_scene load_steps=6 format=3 uid="uid://b8a1x0sctkhh2"]
->>>>>>> ece3cb5a5642b03da83936a916c5939a513a8869
 
 [ext_resource type="Script" path="res://map.gd" id="1_dik58"]
 [ext_resource type="Script" path="res://spawner.gd" id="2_xw8ds"]
@@ -12,12 +8,9 @@
 vertices = PackedVector3Array(-47.7791, 0.4995, -50.8181, -47.7791, 0.4995, 50.9319, 47.7209, 0.4995, 50.9319, 47.7209, 0.4995, -50.8181)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
-<<<<<<< HEAD
-=======
 [sub_resource type="BoxShape3D" id="BoxShape3D_b6r80"]
 size = Vector3(96.0024, 1, 102.063)
 
->>>>>>> ece3cb5a5642b03da83936a916c5939a513a8869
 [node name="map" type="Node3D"]
 script = ExtResource("1_dik58")
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8wg07vy8tkfw"]
 
-[ext_resource type="Script" path="res://lobby.gd" id="1_2m8fy"]
+[ext_resource type="Script" uid="uid://d2hconms05tlu" path="res://lobby.gd" id="1_2m8fy"]
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -20,20 +20,30 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Host" type="Button" parent="."]
-layout_mode = 0
-offset_left = 213.0
-offset_top = 519.0
-offset_right = 319.0
-offset_bottom = 587.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.185
+anchor_top = 0.801
+anchor_right = 0.277
+anchor_bottom = 0.906
+offset_left = -0.119995
+offset_top = -0.0480347
+offset_right = -0.104004
+offset_bottom = -0.0880127
 text = "HOST
 "
 
 [node name="join" type="Button" parent="."]
-layout_mode = 0
-offset_left = 802.0
-offset_top = 507.0
-offset_right = 905.0
-offset_bottom = 576.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.696
+anchor_top = 0.782
+anchor_right = 0.786
+anchor_bottom = 0.889
+offset_left = 0.207947
+offset_top = 0.263947
+offset_right = -0.472046
+offset_bottom = -0.0720215
 text = "JOIN"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -76,12 +86,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
-
-[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-keep_pressed_outside = true
-text = "click here u fucking nigga"
 
 [node name="Panel2" type="Panel" parent="."]
 layout_mode = 1
@@ -173,5 +177,4 @@ size_flags_horizontal = 3
 text = "confirm"
 
 [connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="password_dialog/Control/HBoxContainer/cancel" to="." method="_on_cancel_pressed"]
