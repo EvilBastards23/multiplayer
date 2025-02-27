@@ -119,7 +119,7 @@ func on_join() -> void:
 	join("127.0.0.1")
 	
 	# Hide the lobby UI once the player joins
-	$CanvasLayer.hide()
+	$CanvasLayer/Lobby.hide()
 
 # Function for handling the 'host' button press
 func on_host() -> void:
@@ -127,4 +127,4 @@ func on_host() -> void:
 	host()
 	
 	# Hide the lobby UI once the player hosts
-	$CanvasLayer.hide()
+	$CanvasLayer/Lobby.hide()

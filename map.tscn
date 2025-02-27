@@ -1,15 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8a1x0sctkhh2"]
+[gd_scene load_steps=3 format=3 uid="uid://b8a1x0sctkhh2"]
 
 [ext_resource type="Script" path="res://map.gd" id="1_dik58"]
-[ext_resource type="Script" path="res://spawner.gd" id="2_xw8ds"]
-[ext_resource type="PackedScene" uid="uid://cy6bfrn7ujx0m" path="res://enemy_type_1.tscn" id="3_iqrvn"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_euki8"]
 vertices = PackedVector3Array(-47.7791, 0.4995, -50.8181, -47.7791, 0.4995, 50.9319, 47.7209, 0.4995, 50.9319, 47.7209, 0.4995, -50.8181)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_b6r80"]
-size = Vector3(96.0024, 1, 102.063)
 
 [node name="map" type="Node3D"]
 script = ExtResource("1_dik58")
@@ -21,16 +16,3 @@ navigation_mesh = SubResource("NavigationMesh_euki8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.8926, 0, 0, 0)
 use_collision = true
 size = Vector3(96.5582, 0.001, 26.367)
-
-[node name="spawner" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.5957, 0)
-script = ExtResource("2_xw8ds")
-enemy_scene = ExtResource("3_iqrvn")
-
-[node name="Area3D" type="Area3D" parent="spawner"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="spawner/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.126789, 0, 0.137421)
-shape = SubResource("BoxShape3D_b6r80")
-
-[node name="SpawnTimer" type="Timer" parent="spawner"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=4 uid="uid://cy6bfrn7ujx0m"]
 
-[ext_resource type="Script" uid="uid://dluq4yxumlf0q" path="res://enemy.gd" id="1_xblyy"]
-[ext_resource type="Script" uid="uid://bc785ya6iyihd" path="res://health_component.gd" id="2_ao77u"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_xblyy"]
+[ext_resource type="Script" path="res://health_component.gd" id="2_ao77u"]
 [ext_resource type="PackedScene" uid="uid://b2pdyhbk85tg8" path="res://healt_bar.tscn" id="3_8mhog"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gnbwn"]
