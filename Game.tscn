@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ycgir5qxhglk"]
+[gd_scene load_steps=3 format=3 uid="uid://ycgir5qxhglk"]
 
-[ext_resource type="PackedScene" uid="uid://6n866ulsstce" path="res://World.tscn" id="1_npl2e"]
+[ext_resource type="PackedScene" uid="uid://6n866ulsstce" path="res://Core/Scene/Multiplayer_Scene/World.tscn" id="1_npl2e"]
+[ext_resource type="PackedScene" uid="uid://u6ntgib7r4ux" path="res://Core/Scene/Game_Scene/soul.tscn" id="2_xkndl"]
 
 [node name="game" type="Node3D"]
 
 [node name="Node3D" parent="." instance=ExtResource("1_npl2e")]
+
+[node name="Soul" parent="." instance=ExtResource("2_xkndl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04516, 2.25738, -8.06709)
