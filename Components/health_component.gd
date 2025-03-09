@@ -60,11 +60,21 @@ func handle_death() -> void:
 	# Get the parent node (player or enemy)
 	var parent = get_parent()
 	
-	# If we're running on the server, queue free with a small delay
-	# This ensures all clients receive the death notification
-	if is_multiplayer_authority():
-		
-		parent.queue_free()
-	# If we're on a client, we can queue free immediately
-	else:
-		parent.queue_free()
+	
+	if parent.is_in_group("players"):
+		# If we're running on the server, queue free with a small delay
+		# This ensures all clients receive the death notification
+		if is_multiplayer_authority():
+			parent.is_dead = true
+			parent.hide()
+			parent.get_node("CollisionShape3D").call_deferred("set_disabled", true)
+			parent.camera.target = parent.get_parent().get_camera2().target
+			parent.soul_component.drop_soul()
+			
+		# If we're on a client, we can queue free immediately
+		else:
+			parent.is_dead = true
+			parent.hide()
+			parent.get_node("CollisionShape3D").call_deferred("set_disabled", true)
+			#parent.camera.target = parent.get_parent().get_camera1().target
+			

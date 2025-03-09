@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# Check if the summon input is pressed
-	if player.is_multiplayer_authority():
+	if player.is_multiplayer_authority() and not player.is_dead:
 		if Input.is_action_just_pressed("summon_boulder"):
 			summon_bolder()
 

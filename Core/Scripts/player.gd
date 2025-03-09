@@ -3,6 +3,7 @@ extends CharacterBody3D
 # Constants for movement speed and jump velocity
 var SPEED:int = 10
 const JUMP_VELOCITY = 4.5
+var is_dead:bool = false
 
 # Exported variable for camera reference
 @export var camera: Camera3D
@@ -18,13 +19,14 @@ const JUMP_VELOCITY = 4.5
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
+
 # Called when the node is ready
 func _ready() -> void:
 	health_component.current_hp = 50
 	if is_multiplayer_authority():
 		camera = get_parent().get_camera1()
 		camera.target = self
-
+	
 	else:
 		camera = get_parent().get_camera2()
 		camera.target = self
@@ -36,6 +38,7 @@ func _ready() -> void:
 		$CanvasLayer.visible = true
 	else:
 		$CanvasLayer.visible = false
+	
 	
 # Function to check if mouse is over any UI element
 func is_mouse_over_ui() -> bool:
@@ -59,7 +62,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 func _physics_process(delta: float) -> void:
-	if is_multiplayer_authority():
+	if is_multiplayer_authority() and !is_dead:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 
@@ -112,3 +115,34 @@ func take_damage(body)->void:
 	if body.is_in_group("bullet"):
 		$health_component.take_damage(body.damage)
 		body.queue_free()
+		
+
+func spawn(area: Area3D):
+	is_dead = false
+	self.show()
+	health_component.current_hp = health_component.max_hp
+	# Get the collision shape inside the Area3D
+	var collision_shape = area.get_node_or_null("CollisionShape3D")
+	if collision_shape and collision_shape.shape is BoxShape3D:
+		var shape: BoxShape3D = collision_shape.shape
+		var extents = shape.size / 2  # Half the size for proper positioning
+		var center = collision_shape.global_transform.origin
+		
+		# Generate a random position within the box shape
+		var random_x = randf_range(center.x - extents.x, center.x + extents.x)
+		var random_y = randf_range(center.y - extents.y, center.y + extents.y)
+		var random_z = randf_range(center.z - extents.z, center.z + extents.z)
+		
+		var spawn_position = Vector3(random_x, random_y, random_z)
+		global_transform.origin = spawn_position
+
+	else:
+		push_error("No valid CollisionShape3D found in Area3D!")
+
+	# Enable collision after spawning
+	get_node("CollisionShape3D").call_deferred("set_disabled", false)
+	
+	# Set camera to follow this character
+	camera.target = self
+
+	

@@ -1,6 +1,6 @@
 extends Node
 
-var soul_amount:int
+var soul_amount:int = 200
 var soul_owner:String = "1"
 var item_name = "soul"
 @onready var pick_up_area: Area3D = $pick_up_area

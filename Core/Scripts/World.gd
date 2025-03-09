@@ -4,6 +4,7 @@ extends Node
 var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 var player_scene: PackedScene = preload("res://Core/Scene/Game_Scene/player.tscn")
 var map_scene: PackedScene = preload("res://Core/Scene/Game_Scene/map.tscn")
+@onready var global: Node = $Global
 
 # Reference to camera nodes for the players
 @onready var camera1: Camera3D = $camera1
@@ -16,6 +17,7 @@ func _ready() -> void:
 	# Connect buttons in the lobby to their respective functions (host/join)
 	$CanvasLayer/Lobby.get_node("Host").connect("pressed", on_host)
 	$CanvasLayer/Lobby.get_node("join").connect("pressed", on_join)
+
 	
 	# Ensure that both cameras are available in the scene, if not, show an error
 	if !camera1 or !camera2:
@@ -28,6 +30,7 @@ func _ready() -> void:
 func host(port: int = 2222, max_players: int = 3) -> void:
 	# Create a server peer that listens on the specified port
 	var err = peer.create_server(port, max_players)
+	
 	if err != OK:
 		push_error("Cannot create server")
 		return
@@ -83,7 +86,7 @@ func _on_player_added(id: int) -> void:
 	if !player:
 		push_error("Player node not found after adding!")
 		return
-	
+
 	# Add camera setup logic here if needed
 
 # Get the first camera reference
@@ -128,3 +131,9 @@ func on_host() -> void:
 	
 	# Hide the lobby UI once the player hosts
 	$CanvasLayer/Lobby.hide()
+
+func _on_button_pressed() -> void:
+	print(global.get_all_players(),"this is dictionarry")
+	global.rpc("initialize_players")
+	global.respawn_dead_players($Area3D)
+		

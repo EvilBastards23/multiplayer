@@ -8,5 +8,5 @@ func _ready() -> void:
 
 
 func chaging_label(amount:int):
-	print("signal is emiting")
+	
 	$HBoxContainer/Label.text = str(amount)
