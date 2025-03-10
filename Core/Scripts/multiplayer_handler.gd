@@ -2,29 +2,15 @@ extends Node
 
 # Declare variables for peer, player, and map scenes
 var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
-var player_scene: PackedScene = preload("res://Core/Scene/Game_Scene/player.tscn")
-var map_scene: PackedScene = preload("res://Core/Scene/Game_Scene/map.tscn")
-@onready var global: Node = $Global
 
-# Reference to camera nodes for the players
-@onready var camera1: Camera3D = $camera1
-@onready var camera2: Camera3D = $camera2
-
-# Signal to notify when a player is added, for coordinating player-camera setup
-
+signal game_started
 
 func _ready() -> void:
 	# Connect buttons in the lobby to their respective functions (host/join)
 	$CanvasLayer/Lobby.get_node("Host").connect("pressed", on_host)
 	$CanvasLayer/Lobby.get_node("join").connect("pressed", on_join)
+	
 
-	
-	# Ensure that both cameras are available in the scene, if not, show an error
-	if !camera1 or !camera2:
-		push_error("Cameras not found in scene!")
-	
-	# Connect the player_added signal to the local handler function
-	
 
 # Function to start a server (host)
 func host(port: int = 2222, max_players: int = 3) -> void:
@@ -37,13 +23,12 @@ func host(port: int = 2222, max_players: int = 3) -> void:
 	
 	# Set the multiplayer peer to the created server
 	multiplayer.multiplayer_peer = peer
+	$CanvasLayer/Lobby/start.show()
 	
-	# Connect signals for when peers connect or disconnect
-	multiplayer.peer_connected.connect(add_player)
-	multiplayer.peer_disconnected.connect(del_player)
+	
 	
 	# Host also needs to add their own player
-	call_deferred("add_player", multiplayer.get_unique_id())
+	
 
 # Function to join a server as a client
 func join(ip: String, port: int = 2222) -> void:
@@ -61,23 +46,8 @@ func _on_peer_disconnected(id: int) -> void:
 	del_player(id)
 
 # Function to add a player to the game when a new peer connects
-func add_player(id: int) -> void:
-	# Ensure we are executing this on the main thread
-	if !is_inside_tree():
-		call_deferred("add_player", id)
-		return
-		
-	# Instantiate a new player from the player scene
-	var player = player_scene.instantiate()
-	player.name = str(id)
-	
-	# Add the player to the scene as a child
-	add_child(player)
-	
-	# Emit the player_added signal to trigger camera setup
-	
-	
-	print("Player added with ID: ", id)
+func emit_game_started()->void:
+	emit_signal("game_started")
 
 
 
@@ -92,10 +62,7 @@ func _del_player(id: int):
 	var player = get_node_or_null(str(id))
 	if player:
 		# If the player is the target of either camera, clear the target
-		if camera1.target == player:
-			camera1.target = null
-		if camera2.target == player:
-			camera2.target = null
+
 		
 		# Free the player's node from the scene
 		player.queue_free()
@@ -106,7 +73,7 @@ func on_join() -> void:
 	join("127.0.0.1")
 	
 	# Hide the lobby UI once the player joins
-	$CanvasLayer/Lobby.hide()
+	#$CanvasLayer/Lobby.hide()
 
 # Function for handling the 'host' button press
 func on_host() -> void:
@@ -114,10 +81,15 @@ func on_host() -> void:
 	host()
 	
 	# Hide the lobby UI once the player hosts
-	$CanvasLayer/Lobby.hide()
+	#$CanvasLayer/Lobby.hide()
 
-func _on_button_pressed() -> void:
-	print(global.get_all_players(),"this is dictionarry")
-	global.rpc("initialize_players")
-	global.respawn_dead_players($Area3D)
+
+#func _on_button_pressed() -> void:
+	#print(global.get_all_players(),"this is dictionarry")
+	#global.rpc("initialize_players")
+	#global.respawn_dead_players($Area3D)
+	
+	
+
+	
 		

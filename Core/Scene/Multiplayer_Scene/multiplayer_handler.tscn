@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://6n866ulsstce"]
+
+[ext_resource type="Script" uid="uid://dcap3tqxxgq8o" path="res://Core/Scripts/multiplayer_handler.gd" id="3_t4t2d"]
+[ext_resource type="PackedScene" uid="uid://b8wg07vy8tkfw" path="res://UI_elemenets/lobby.tscn" id="4_pwar0"]
+
+[node name="multiplayer_handler" type="Node3D"]
+script = ExtResource("3_t4t2d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Lobby" parent="CanvasLayer" instance=ExtResource("4_pwar0")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchor_left = 0.422
+anchor_top = 0.386
+anchor_right = 0.538
+anchor_bottom = 0.545
+offset_left = -0.144012
+offset_top = -0.128006
+offset_right = 0.223938
+offset_bottom = -0.160004
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "spawn"

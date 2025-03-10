@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b8wg07vy8tkfw"]
+[gd_scene load_steps=2 format=3 uid="uid://b8wg07vy8tkfw"]
+
+[ext_resource type="Script" uid="uid://d2hconms05tlu" path="res://UI_elemenets/lobby.gd" id="1_rep1g"]
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rep1g")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -24,7 +27,7 @@ anchor_top = 0.801
 anchor_right = 0.277
 anchor_bottom = 0.906
 offset_left = -0.119995
-offset_top = -0.0480347
+offset_top = -0.0480957
 offset_right = -0.104004
 offset_bottom = -0.0880127
 text = "HOST
@@ -33,14 +36,14 @@ text = "HOST
 [node name="join" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.696
+anchor_left = 0.299
 anchor_top = 0.782
-anchor_right = 0.786
-anchor_bottom = 0.889
-offset_left = 0.207947
-offset_top = 0.263947
-offset_right = -0.472046
-offset_bottom = -0.0720215
+anchor_right = 0.389
+anchor_bottom = 0.907
+offset_left = 0.551971
+offset_top = 12.264
+offset_right = -0.12796
+offset_bottom = 0.263977
 text = "JOIN"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -173,5 +176,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "confirm"
 
+[node name="start" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 480.0
+offset_top = 529.0
+offset_right = 525.0
+offset_bottom = 560.0
+text = "start"
+
 [connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="password_dialog/Control/HBoxContainer/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
