@@ -1,13 +1,11 @@
 extends Control
 
 
-var world_scene:PackedScene = preload("res://world.tscn")
+var world_scene:PackedScene = preload("res://Core/Scene/world.tscn")
 
 
 func _ready() -> void:
 	pass
-
-
 
 func _on_start_pressed() -> void:
 	rpc("start_world")

@@ -2,6 +2,9 @@ extends Node3D
 
 @onready var camera_1: Camera3D = $camera1
 @onready var camera_2: Camera3D = $camera2
+
+
+
 var player_scene: PackedScene = preload("res://Core/Scene/Game_Scene/player.tscn")
 var map_scene: PackedScene = preload("res://Core/Scene/Game_Scene/map.tscn")
 
@@ -29,13 +32,15 @@ func add_player(id: int) -> void:
 	
 	print("Player added with ID: ", id)
 
-# Get the first camera reference
+
 func get_camera1() -> Camera3D:
 	return camera_1
 	
 # Get the second camera reference
 func get_camera2() -> Camera3D:
 	return camera_2
+	
+
 	
 func on_game_started() -> void:
 	print("game_starting")

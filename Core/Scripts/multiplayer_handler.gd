@@ -7,13 +7,11 @@ signal game_started
 
 func _ready() -> void:
 	# Connect buttons in the lobby to their respective functions (host/join)
-	$CanvasLayer/Lobby.get_node("Host").connect("pressed", on_host)
-	$CanvasLayer/Lobby.get_node("join").connect("pressed", on_join)
+	$CanvasLayer/Lobby/menu_lobby.get_node("Host").connect("pressed", on_host)
+	$CanvasLayer/Lobby/menu_lobby.get_node("join").connect("pressed", on_join)
 	
-
-
 # Function to start a server (host)
-func host(port: int = 2222, max_players: int = 3) -> void:
+func host(port: int = 2222, max_players: int = 4) -> void:
 	# Create a server peer that listens on the specified port
 	var err = peer.create_server(port, max_players)
 	
@@ -23,12 +21,9 @@ func host(port: int = 2222, max_players: int = 3) -> void:
 	
 	# Set the multiplayer peer to the created server
 	multiplayer.multiplayer_peer = peer
-	$CanvasLayer/Lobby/start.show()
-	
-	
+	$CanvasLayer/Lobby/menu_lobby/start.show()
 	
 	# Host also needs to add their own player
-	
 
 # Function to join a server as a client
 func join(ip: String, port: int = 2222) -> void:

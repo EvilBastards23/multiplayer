@@ -1,0 +1,138 @@
+[gd_scene load_steps=2 format=3 uid="uid://7rqm5hgfvauk"]
+
+[ext_resource type="Script" uid="uid://cnlp3h27xbm8p" path="res://level_menu.gd" id="1_wdaev"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_top = 0.681
+anchor_right = 0.138
+anchor_bottom = 1.0
+offset_top = -0.288025
+offset_right = 0.0239868
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_wdaev")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Level:"
+
+[node name="level_label" type="Label" parent="Panel/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "1"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Atrribute point:"
+
+[node name="attribute_point" type="Label" parent="Panel/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+mouse_filter = 0
+text = "0"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Agility:"
+horizontal_alignment = 1
+
+[node name="Agility_label" type="Label" parent="Panel/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "1"
+
+[node name="add_button" type="Button" parent="Panel/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "+"
+
+[node name="Control" type="Control" parent="Panel/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Arcane power:"
+horizontal_alignment = 1
+
+[node name="Arcane_power_label" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "1"
+
+[node name="add_button" type="Button" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "+"
+
+[node name="Control" type="Control" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Endurance:"
+horizontal_alignment = 1
+
+[node name="Endurance_label" type="Label" parent="Panel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "1"
+
+[node name="add_button" type="Button" parent="Panel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "+"
+
+[node name="Control" type="Control" parent="Panel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Vitality:"
+horizontal_alignment = 1
+
+[node name="Vitualliy_label" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="add_button" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+"
+
+[node name="Control" type="Control" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer4/add_button" to="." method="_on_agility_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer2/add_button" to="." method="_on_arcane_power_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer3/add_button" to="." method="_on_endurance_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/add_button" to="." method="_on_vituality_pressed"]

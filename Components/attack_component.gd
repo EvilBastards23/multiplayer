@@ -4,6 +4,7 @@ extends Node
 @export var bolder_scene: PackedScene  # Reference to the boulder scene
 
 var player: CharacterBody3D  # The player character to get facing direction
+var damage:int = 20
 
 func _ready() -> void:
 	# Ensure we can access the player or get it dynamically (if the component is on the player, this works)	
@@ -11,7 +12,7 @@ func _ready() -> void:
 	if player == null:
 		print("Warning: The BoulderSummonComponent expects the player to be its parent.")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Check if the summon input is pressed
 	if player.is_multiplayer_authority() and not player.is_dead:
 		if Input.is_action_just_pressed("summon_boulder"):
@@ -42,11 +43,7 @@ func create_boulder(spawn_position: Vector3, forward_direction: Vector3) -> void
 	# Instantiate the boulder scene
 	var bolder = bolder_scene.instantiate()
 	
-
-	# Set the boulder's position
-	
-
 	# Add the boulder to the scene (root or specific node)
 	get_tree().root.add_child(bolder)
 	bolder.global_position = spawn_position
-	bolder.set_direction(forward_direction,20)
+	bolder.set_direction(forward_direction,damage)

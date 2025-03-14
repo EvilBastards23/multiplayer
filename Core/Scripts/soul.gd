@@ -1,6 +1,6 @@
 extends Node
 
-var soul_amount:int = 200
+var soul_amount:int = 100000
 var soul_owner:String = "1"
 var item_name = "soul"
 @onready var pick_up_area: Area3D = $pick_up_area
@@ -17,6 +17,6 @@ func body_entered_in_area(body)->void:
 		body.inventory_component.add_inventory("soul")
 		queue_free()
 		
-func set_soul(amount:int,owner:String)->void:
+func set_soul(amount:int,oowner:String)->void:
 	soul_amount = amount
-	soul_owner = owner
+	soul_owner = oowner

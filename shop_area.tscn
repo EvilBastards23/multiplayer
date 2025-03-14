@@ -1,0 +1,127 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8jo2xa4cdbt6"]
+
+[ext_resource type="Script" uid="uid://c1thyfnnikfqb" path="res://shop_area.gd" id="1_xd0lc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xehpp"]
+size = Vector3(6.58795, 1, 4.90454)
+
+[node name="Node3D" type="Node3D"]
+metadata/_edit_horizontal_guides_ = [-8.0]
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_xd0lc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.447954, -0.0129645, 0.207024)
+shape = SubResource("BoxShape3D_xehpp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.346
+anchor_top = 0.156
+anchor_right = 0.543
+anchor_bottom = 0.218
+offset_left = 0.40799
+offset_top = -0.0880051
+offset_right = -0.536072
+offset_bottom = -0.264008
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press F"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+button_mask = 0
+flat = true
+
+[node name="shop_menu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.52
+offset_right = 4.0
+offset_bottom = 0.039978
+
+[node name="Panel" type="Panel" parent="CanvasLayer/shop_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="buy_soul" type="Button" parent="CanvasLayer/shop_menu/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.858
+anchor_right = 0.067
+anchor_bottom = 0.95
+offset_left = 1.0
+offset_top = -0.146027
+offset_right = 0.547997
+offset_bottom = -0.150024
+text = "buy level"
+
+[node name="Label" type="Label" parent="CanvasLayer/shop_menu/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.623
+anchor_right = 0.084
+anchor_bottom = 0.691
+offset_top = 0.048996
+offset_right = -0.104004
+offset_bottom = 0.13298
+text = "Next level:"
+
+[node name="next_level_label" type="Label" parent="CanvasLayer/shop_menu/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.099
+anchor_top = 0.623
+anchor_right = 0.183
+anchor_bottom = 0.691
+offset_left = -0.444008
+offset_top = 0.048996
+offset_right = -0.548019
+offset_bottom = 0.13298
+text = "0"
+
+[node name="Label2" type="Label" parent="CanvasLayer/shop_menu/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.754
+anchor_right = 0.087
+anchor_bottom = 0.822
+offset_top = -0.0980072
+offset_right = -60.572
+offset_bottom = -0.0140076
+text = "Current soul:"
+
+[node name="current_soul_label" type="Label" parent="CanvasLayer/shop_menu/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.098
+anchor_top = 0.754
+anchor_right = 0.185
+anchor_bottom = 0.822
+offset_left = -0.288002
+offset_top = -0.0980072
+offset_right = 0.139999
+offset_bottom = -0.0140076
+text = "0"
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="player_entered"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="player_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="Area3D" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/shop_menu/Panel/buy_soul" to="Area3D" method="_on_buy_soul_pressed"]

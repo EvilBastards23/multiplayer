@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcmv726s0m8lp"]
+
+[ext_resource type="Script" uid="uid://dgw2rh7wjhbwr" path="res://Core/Scene/Multiplayer_Scene/world.gd" id="1_aikh5"]
+[ext_resource type="PackedScene" uid="uid://b8a1x0sctkhh2" path="res://Core/Scene/Game_Scene/map.tscn" id="2_looul"]
+[ext_resource type="Script" uid="uid://bq0kcmt0edy04" path="res://Core/Scripts/camera_3d.gd" id="3_g83c2"]
+[ext_resource type="PackedScene" uid="uid://qnpjdxarwyo" path="res://Core/Scene/Game_Scene/health_potion.tscn" id="4_t1dk7"]
+[ext_resource type="PackedScene" uid="uid://ldwixym0udet" path="res://Core/Scene/Game_Scene/speed_potion.tscn" id="5_q6s7q"]
+[ext_resource type="Script" uid="uid://d2bpa6ukv0sgi" path="res://Core/Scene/Multiplayer_Scene/Global.gd" id="6_l1otr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vwi3v"]
+size = Vector3(6.62585, 1, 5.34387)
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_aikh5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="map" parent="." instance=ExtResource("2_looul")]
+script = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="camera1" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.34958, 7.33138, 32.6566)
+script = ExtResource("3_g83c2")
+follow_speed = 6.0
+height = 12.0
+distance = 7.0
+angle = -30.0
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://d2fdrmkwh2jc5")
+spawn_path = NodePath("..")
+
+[node name="camera2" type="Camera3D" parent="."]
+script = ExtResource("3_g83c2")
+follow_speed = 6.0
+height = 12.0
+distance = 7.0
+angle = -30.0
+
+[node name="HealthPotion2" parent="." instance=ExtResource("4_t1dk7")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1.26574, 1.1403, -6.29859)
+
+[node name="HealthPotion" parent="." instance=ExtResource("4_t1dk7")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -4.6279, 0.817366, 3.93764)
+
+[node name="SpeedPotion" parent="." instance=ExtResource("5_q6s7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.57782, 0.821184, -1.4359)
+
+[node name="SpeedPotion2" parent="." instance=ExtResource("5_q6s7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2427, 0.973165, 6.40697)
+
+[node name="SpeedPotion3" parent="." instance=ExtResource("5_q6s7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.640571, 1.27746, 5.48081)
+
+[node name="SpeedPotion4" parent="." instance=ExtResource("5_q6s7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73413, 1.28316, 6.32418)
+
+[node name="SpeedPotion5" parent="." instance=ExtResource("5_q6s7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4321, 0.0930958, 16.0277)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.76551, 32.4819)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.81293, 0, 2.17194)
+shape = SubResource("BoxShape3D_vwi3v")
+
+[node name="Global" type="Node" parent="."]
+script = ExtResource("6_l1otr")

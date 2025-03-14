@@ -13,6 +13,10 @@ var is_dead:bool = false
 @onready var inventory_component: Node = $inventory_component
 @onready var item_ui: Control = $CanvasLayer/item_ui
 @onready var soul_component: Node = $soul_component
+@onready var level_menu: Control = $CanvasLayer/level_menu
+@onready var level_component: Node = $level_component
+@onready var soul_ui: Control = $CanvasLayer/soul_ui
+
 
 
 # Called when the node enters the scene tree
@@ -57,7 +61,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 		
 	# If the mouse is over UI, prevent shooting and other mouse interactions
-	if is_mouse_over_ui() and (event is InputEventMouseButton or event.is_action("shoot")):
+	if is_mouse_over_ui() and (event is InputEventMouseButton or event.is_action("summon_boulder")):
 		get_tree().set_input_as_handled()
 		return
 
@@ -144,5 +148,7 @@ func spawn(area: Area3D):
 	
 	# Set camera to follow this character
 	camera.target = self
+	
+
 
 	
