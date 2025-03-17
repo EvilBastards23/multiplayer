@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://csmmswa1clnn3"]
+
+[ext_resource type="Script" uid="uid://y0juhg1g04ne" path="res://lobby_3d.gd" id="1_6vany"]
+[ext_resource type="PackedScene" uid="uid://bio5t6y3ng8po" path="res://monican.tscn" id="2_6vany"]
+
+[node name="Lobby" type="Node3D"]
+script = ExtResource("1_6vany")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.511, 0.001)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
+
+[node name="Control" type="Control" parent="Camera3D/CanvasLayer"]
+layout_mode = 3
+anchor_right = 0.278
+anchor_bottom = 0.294
+offset_right = 0.239929
+offset_bottom = -0.519989
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Camera3D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.131
+anchor_top = 0.237
+anchor_right = 0.973
+anchor_bottom = 0.495
+offset_left = 0.0150299
+offset_top = -0.0281067
+offset_right = 0.157471
+offset_bottom = -0.046051
+text = "ready
+"
+
+[node name="Button2" type="Button" parent="Camera3D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.131
+anchor_top = 0.611
+anchor_right = 0.973
+anchor_bottom = 0.868
+offset_left = 0.0150299
+offset_top = -0.0851135
+offset_right = 0.157471
+offset_bottom = 0.0869293
+text = "fuck oyu"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="monican2" parent="." instance=ExtResource("2_6vany")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167502, -0.69083, -5.28264)
+visible = false
+
+[node name="monican1" parent="." instance=ExtResource("2_6vany")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45819, -0.69083, -5.28264)
+
+[node name="monican3" parent="." instance=ExtResource("2_6vany")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2304, -0.69083, -5.28264)
+visible = false
+
+[node name="monican4" parent="." instance=ExtResource("2_6vany")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52818, -0.69083, -5.28264)
+visible = false
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.168, -0.697, -3.672)

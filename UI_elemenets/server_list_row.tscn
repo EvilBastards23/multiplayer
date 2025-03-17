@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5gekju1wkr28"]
+
+[ext_resource type="Script" uid="uid://c28wrncjsktly" path="res://UI_elemenets/server_list_row.gd" id="1_enqd3"]
+[ext_resource type="FontFile" uid="uid://bf1qwda2f45ra" path="res://UI_elemenets/Jua-Regular.ttf" id="1_habj4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ee4bf"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_kbped"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_iy58a"]
+font = ExtResource("1_habj4")
+font_size = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtu10"]
+
+[sub_resource type="Theme" id="Theme_ee4bf"]
+Button/styles/normal = SubResource("StyleBoxFlat_qtu10")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fj5cn"]
+bg_color = Color(0.305882, 0.305882, 0.305882, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="HBoxContainer" type="HBoxContainer"]
+offset_right = 663.0
+offset_bottom = 41.0
+script = ExtResource("1_enqd3")
+
+[node name="number" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_habj4")
+text = "1"
+label_settings = SubResource("LabelSettings_ee4bf")
+
+[node name="server_name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_habj4")
+text = "Suka blyat"
+label_settings = SubResource("LabelSettings_kbped")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="queue" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_habj4")
+text = "1/4"
+label_settings = SubResource("LabelSettings_iy58a")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="join_button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme = SubResource("Theme_ee4bf")
+theme_override_fonts/font = ExtResource("1_habj4")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_fj5cn")
+text = "JOIN"
+autowrap_mode = 3

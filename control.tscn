@@ -1,0 +1,367 @@
+[gd_scene load_steps=21 format=3 uid="uid://blvgkbr1h1vyv"]
+
+[ext_resource type="FontFile" uid="uid://bf1qwda2f45ra" path="res://UI_elemenets/Jua-Regular.ttf" id="1_62e2m"]
+[ext_resource type="Script" uid="uid://cgm8ni8dfyp73" path="res://control.gd" id="1_kbped"]
+[ext_resource type="Texture2D" uid="uid://bd2q8p675vpr1" path="res://UI_elemenets/reset-svgrepo-com(4).svg" id="2_62e2m"]
+[ext_resource type="PackedScene" uid="uid://c5gekju1wkr28" path="res://UI_elemenets/server_list_row.tscn" id="3_qtu10"]
+[ext_resource type="Script" uid="uid://ccxh6opnn5ga7" path="res://UI_elemenets/host_server_panel.gd" id="4_ee4bf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62e2m"]
+bg_color = Color(0.288518, 0.288518, 0.288518, 1)
+
+[sub_resource type="Theme" id="Theme_qtu10"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4bf"]
+bg_color = Color(0.125911, 0.125911, 0.125911, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbped"]
+bg_color = Color(0.305882, 0.305882, 0.305882, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_fj5cn"]
+font_size = 55
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qtu10"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy58a"]
+bg_color = Color(0.305882, 0.305882, 0.305882, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_6a6wx"]
+font_size = 30
+font_color = Color(0.741176, 0.741176, 0.741176, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sky72"]
+font = ExtResource("1_62e2m")
+font_size = 30
+font_color = Color(0.741385, 0.741385, 0.741385, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ytqx"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pxugv"]
+font_size = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eh0v1"]
+content_margin_left = 20.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.450648, 0.450648, 0.450648, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_color = Color(0.344076, 0.344076, 0.344076, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6a6wx"]
+bg_color = Color(0.305882, 0.305882, 0.305882, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ytqx"]
+font_size = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sky72"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.219501, 0.219501, 0.219501, 1)
+shadow_size = 9
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kbped")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_62e2m")
+
+[node name="server_list_panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.052
+anchor_top = 0.108
+anchor_right = 0.6
+anchor_bottom = 0.924
+offset_left = 0.0960007
+offset_top = 0.0159988
+offset_right = -0.200012
+offset_bottom = 0.247986
+theme = SubResource("Theme_qtu10")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ee4bf")
+
+[node name="Panel" type="Panel" parent="Panel/server_list_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062
+anchor_top = 0.043
+anchor_right = 0.82
+anchor_bottom = 0.159
+offset_left = -0.215569
+offset_top = -4.90502
+offset_right = 0.471436
+offset_bottom = -0.160416
+theme_override_styles/panel = SubResource("StyleBoxFlat_kbped")
+
+[node name="Label" type="Label" parent="Panel/server_list_panel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_62e2m")
+text = "Server List"
+label_settings = SubResource("LabelSettings_fj5cn")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+clip_text = true
+
+[node name="Button" type="Button" parent="Panel/server_list_panel/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.006
+anchor_right = 1.189
+anchor_bottom = 0.981
+offset_left = 0.212036
+offset_right = 0.17804
+offset_bottom = 0.0330048
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_icons/icon = SubResource("ViewportTexture_qtu10")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iy58a")
+icon = ExtResource("2_62e2m")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/server_list_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.067
+anchor_top = 0.189
+anchor_right = 0.955
+anchor_bottom = 0.922
+offset_left = -0.474892
+offset_top = 0.394211
+offset_right = 0.469849
+offset_bottom = 0.24585
+theme_override_constants/separation = 4
+
+[node name="Control" type="Control" parent="Panel/server_list_panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/server_list_panel/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/server_list_panel/VBoxContainer/Control/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_62e2m")
+text = "#"
+label_settings = SubResource("LabelSettings_6a6wx")
+
+[node name="Label2" type="Label" parent="Panel/server_list_panel/VBoxContainer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_62e2m")
+text = "Server Name"
+label_settings = SubResource("LabelSettings_6a6wx")
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="Label3" type="Label" parent="Panel/server_list_panel/VBoxContainer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_62e2m")
+text = "Queue"
+label_settings = SubResource("LabelSettings_sky72")
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="Panel" type="Label" parent="Panel/server_list_panel/VBoxContainer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Control2" type="Control" parent="Panel/server_list_panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/server_list_panel/VBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.011
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.204
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/server_list_panel/VBoxContainer/Control2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="HBoxContainer" parent="Panel/server_list_panel/VBoxContainer/Control2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qtu10")]
+layout_mode = 2
+
+[node name="server_list_panel2" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.64
+anchor_top = 0.108
+anchor_right = 0.984
+anchor_bottom = 0.26
+offset_left = 0.199951
+offset_top = 0.360001
+offset_right = -0.280029
+offset_bottom = 0.199982
+theme = SubResource("Theme_qtu10")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ee4bf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/server_list_panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = 15.0
+offset_right = -35.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 17
+
+[node name="Label" type="Label" parent="Panel/server_list_panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.1
+theme_override_fonts/font = ExtResource("1_62e2m")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ytqx")
+text = "Player Name:"
+label_settings = SubResource("LabelSettings_pxugv")
+autowrap_mode = 1
+
+[node name="LineEdit" type="LineEdit" parent="Panel/server_list_panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_fonts/font = ExtResource("1_62e2m")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_eh0v1")
+placeholder_text = "Name..."
+max_length = 10
+
+[node name="server_host_panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.64
+anchor_top = 0.336
+anchor_right = 0.984
+anchor_bottom = 0.731
+offset_left = 0.199951
+offset_top = 0.119965
+offset_right = -0.280029
+offset_bottom = 0.52002
+theme = SubResource("Theme_qtu10")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ee4bf")
+script = ExtResource("4_ee4bf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/server_host_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.047
+anchor_top = 0.042
+anchor_right = 0.947
+anchor_bottom = 0.947
+offset_left = -0.0200005
+offset_top = -0.078001
+offset_right = -0.0200195
+offset_bottom = 0.0269775
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 38
+
+[node name="Label2" type="Label" parent="Panel/server_host_panel/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_6a6wx")
+text = "Host Server"
+label_settings = SubResource("LabelSettings_0ytqx")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Panel/server_host_panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.1
+theme_override_fonts/font = ExtResource("1_62e2m")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ytqx")
+text = "Server name:"
+label_settings = SubResource("LabelSettings_pxugv")
+autowrap_mode = 1
+
+[node name="LineEdit" type="LineEdit" parent="Panel/server_host_panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_fonts/font = ExtResource("1_62e2m")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_eh0v1")
+placeholder_text = "Name..."
+max_length = 10
+
+[node name="host_button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.64
+anchor_top = 0.808
+anchor_right = 0.984
+anchor_bottom = 0.918
+offset_left = 0.199951
+offset_top = 0.359985
+offset_right = -3.28003
+offset_bottom = 5.55994
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_62e2m")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxFlat_sky72")
+text = "Host"
