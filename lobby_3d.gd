@@ -3,13 +3,16 @@ extends Node3D
 @onready var ready_button: Button = $Camera3D/CanvasLayer/Control/Button
 var parent: Node
 signal queue_changed
-
+var player_name
 @onready var monicans := {
 	1: $monican1,
 	2: $monican2,
 	3: $monican3,
 	4: $monican4
 }
+
+func save_players_name(player_name:String):
+	player_name = player_name
 
 var player_ids = {}  # Maps player index -> network ID
 var ready_status := {}  # Tracks player readiness
@@ -33,24 +36,41 @@ func on_peer_connected(id: int) -> void:
 	if player_count >= 4:
 		print("Lobby full!")
 		return
-
+	
 	player_count += 1
 	player_ids[player_count] = id
 	ready_status[player_count] = false
-
+	
+	# Show the new player's monican to everyone
 	if monicans.has(player_count):
 		monicans[player_count].show()
 		sync_monican_show.rpc(player_count)
-
+	
 	# Only the host should sync the player list to the new player
 	if multiplayer.is_server():
-		sync_all_players.rpc_id(id, player_ids,ready_status)
+		# Send all current player data to the new player
+		sync_all_players.rpc_id(id, player_ids, ready_status)
+		
+		# Make sure the new player sees all existing players' monicans
+		for player_index in player_ids:
+			if player_index != player_count:  # Skip the newly joined player
+				sync_monican_show.rpc_id(id, player_index)
+		
 		sync_queue_change.rpc(player_count)
+		sync_player_name.rpc(player_count,player_name)
 
 @rpc("authority")
 func sync_queue_change(number:int)->void:
 	var queue_string :String =  str(number) + "/4"
 	emit_signal("queue_changed",queue_string)
+	
+@rpc("call_local","any_peer")
+func sync_player_name(player_index,player_name):
+	var name_label = monicans[player_index].get_node("SubViewport/Control")
+	if player_name == null:
+		name_label.set_name_for_player("")
+	else:
+		name_label.set_name_for_player(player_name)
 	
 
 @rpc("any_peer")
@@ -70,6 +90,11 @@ func _on_ready_button_pressed() -> void:
 			ready_status[player_index] = !ready_status[player_index]
 			
 			sync_ready_state.rpc(player_index, ready_status[player_index])
+			
+			if ready_status[player_index]:
+				$Camera3D/CanvasLayer/Control/Button.text = "Not Ready"
+			else:
+				$Camera3D/CanvasLayer/Control/Button.text = "Ready"
 			
 
 @rpc("any_peer","call_local")

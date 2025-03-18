@@ -31,7 +31,7 @@ offset_left = 0.0150299
 offset_top = -0.0281067
 offset_right = 0.157471
 offset_bottom = -0.046051
-text = "ready
+text = "Ready
 "
 
 [node name="Button2" type="Button" parent="Camera3D/CanvasLayer/Control"]
@@ -45,7 +45,8 @@ offset_left = 0.0150299
 offset_top = -0.0851135
 offset_right = 0.157471
 offset_bottom = 0.0869293
-text = "fuck oyu"
+text = "Exit
+"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
