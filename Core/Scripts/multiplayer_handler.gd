@@ -215,11 +215,19 @@ func _exit_tree():
 	if broadcast_timer and broadcast_timer.is_inside_tree():
 		broadcast_timer.stop()
 		
-func _on_connected_to_peer(_id):
+func _on_connected_to_peer(id):
 	var lobby = LOBBY.instantiate()
-	lobby.save_players_name($Control.get_node("Panel/server_list_panel2/VBoxContainer/LineEdit").text)
-	$Control.hide()
 	add_child(lobby)
+	$Control.hide()
+	
+	# Get player name from input field
+	var player_name = $Control/Panel/server_list_panel2/VBoxContainer/LineEdit.text
+	
+	# Wait a brief moment to ensure the lobby is fully set up
+	await get_tree().create_timer(0.1).timeout
+	
+	# Now save the player name
+	lobby.save_players_name(multiplayer.get_unique_id(), player_name)
 
 func _on_queue_changed(queue_string: String) -> void:
 	if control:

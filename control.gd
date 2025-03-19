@@ -74,7 +74,7 @@ func start_world()->void:
 	
 	var world = world_scene.instantiate()
 	get_parent().add_child(world)
-	get_parent().emit_game_started()
+	get_parent().emit_signal("game_started")
 	$".".hide()
 	
 func change_queue_text(queue_text:String)->void:

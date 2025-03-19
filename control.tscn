@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://blvgkbr1h1vyv"]
+[gd_scene load_steps=20 format=3 uid="uid://blvgkbr1h1vyv"]
 
 [ext_resource type="FontFile" uid="uid://bf1qwda2f45ra" path="res://UI_elemenets/Jua-Regular.ttf" id="1_62e2m"]
 [ext_resource type="Script" uid="uid://cgm8ni8dfyp73" path="res://control.gd" id="1_kbped"]
 [ext_resource type="Texture2D" uid="uid://bd2q8p675vpr1" path="res://UI_elemenets/reset-svgrepo-com(4).svg" id="2_62e2m"]
-[ext_resource type="PackedScene" uid="uid://c5gekju1wkr28" path="res://UI_elemenets/server_list_row.tscn" id="3_qtu10"]
 [ext_resource type="Script" uid="uid://ccxh6opnn5ga7" path="res://UI_elemenets/host_server_panel.gd" id="4_ee4bf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62e2m"]
@@ -243,9 +242,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 5
-
-[node name="HBoxContainer" parent="Panel/server_list_panel/VBoxContainer/Control2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qtu10")]
-layout_mode = 2
 
 [node name="server_list_panel2" type="Panel" parent="Panel"]
 layout_mode = 1

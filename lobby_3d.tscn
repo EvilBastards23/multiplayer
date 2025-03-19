@@ -20,7 +20,7 @@ offset_bottom = -0.519989
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Camera3D/CanvasLayer/Control"]
+[node name="ready" type="Button" parent="Camera3D/CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.131
@@ -34,7 +34,7 @@ offset_bottom = -0.046051
 text = "Ready
 "
 
-[node name="Button2" type="Button" parent="Camera3D/CanvasLayer/Control"]
+[node name="exit" type="Button" parent="Camera3D/CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.131
@@ -67,3 +67,5 @@ visible = false
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.168, -0.697, -3.672)
+
+[connection signal="pressed" from="Camera3D/CanvasLayer/Control/exit" to="." method="_on_exit_pressed"]

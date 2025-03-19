@@ -41,7 +41,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_1pnb6")
-text = "1111111111"
 label_settings = SubResource("LabelSettings_332gl")
 vertical_alignment = 1
 autowrap_mode = 3
