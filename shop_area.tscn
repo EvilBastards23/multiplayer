@@ -9,6 +9,9 @@ size = Vector3(6.58795, 1, 4.90454)
 metadata/_edit_horizontal_guides_ = [-8.0]
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
 script = ExtResource("1_xd0lc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
@@ -47,6 +50,7 @@ button_mask = 0
 flat = true
 
 [node name="shop_menu" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchor_right = 1.0
 anchor_bottom = 0.52

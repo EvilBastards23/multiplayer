@@ -4,6 +4,7 @@ const CHECKBOX_READY = preload("res://UI_elemenets/checkbox-check-svgrepo-com.sv
 const CHECKBOX_NOT_READY = preload("res://UI_elemenets/checkbox-svgrepo-com(2).svg")
 const default_name:String = "player"
 
+
 func check_player_ready(is_ready:bool)->void:
 	match is_ready:
 		true:

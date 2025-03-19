@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://csmmswa1clnn3"]
+[gd_scene load_steps=5 format=3 uid="uid://csmmswa1clnn3"]
 
 [ext_resource type="Script" uid="uid://y0juhg1g04ne" path="res://lobby_3d.gd" id="1_6vany"]
 [ext_resource type="PackedScene" uid="uid://bio5t6y3ng8po" path="res://monican.tscn" id="2_6vany"]
+[ext_resource type="FontFile" uid="uid://bf1qwda2f45ra" path="res://UI_elemenets/Jua-Regular.ttf" id="2_n8hlp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f04m2"]
+font = ExtResource("2_n8hlp")
+font_size = 44
 
 [node name="Lobby" type="Node3D"]
 script = ExtResource("1_6vany")
@@ -25,12 +30,12 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.131
 anchor_top = 0.237
-anchor_right = 0.973
-anchor_bottom = 0.495
+anchor_right = 0.768
+anchor_bottom = 0.5
 offset_left = 0.0150299
 offset_top = -0.0281067
-offset_right = 0.157471
-offset_bottom = -0.046051
+offset_right = -0.140869
+offset_bottom = -0.996002
 text = "Ready
 "
 
@@ -39,14 +44,36 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.131
 anchor_top = 0.611
-anchor_right = 0.973
+anchor_right = 0.771
 anchor_bottom = 0.868
 offset_left = 0.0150299
 offset_top = -0.0851135
-offset_right = 0.157471
+offset_right = -0.102356
 offset_bottom = 0.0869293
 text = "Exit
 "
+
+[node name="Control2" type="Control" parent="Camera3D/CanvasLayer"]
+layout_mode = 3
+anchor_right = 0.278
+anchor_bottom = 0.294
+offset_left = 744.0
+offset_right = 830.744
+offset_bottom = -71.512
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Camera3D/CanvasLayer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game begin in 3,2,1"
+label_settings = SubResource("LabelSettings_f04m2")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
@@ -64,8 +91,5 @@ visible = false
 [node name="monican4" parent="." instance=ExtResource("2_6vany")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52818, -0.69083, -5.28264)
 visible = false
-
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.168, -0.697, -3.672)
 
 [connection signal="pressed" from="Camera3D/CanvasLayer/Control/exit" to="." method="_on_exit_pressed"]

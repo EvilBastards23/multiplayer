@@ -12,6 +12,11 @@ var player_names := {}  # Stores network_id -> player_name
 
 # Track whether disconnect dialog has been shown
 var disconnect_dialog_shown = false
+var world_scene:PackedScene = preload("res://Core/Scene/world.tscn")
+# Game locking variables
+var game_locked = false
+var start_timer: Timer
+@onready var status_label = $Camera3D/CanvasLayer/Control2/Label
 
 func save_players_name(player_id: int, player_name: String):
 	print("Saving player name:", player_name, "for ID:", player_id)
@@ -58,8 +63,10 @@ func _ready() -> void:
 	multiplayer.multiplayer_peer.connect("peer_disconnected", on_peer_disconnected)
 	ready_button.connect("pressed", _on_ready_button_pressed)
 	
-	# Connect the exit button
-	$Camera3D/CanvasLayer/Control/exit.connect("pressed", _on_exit_pressed)
+	
+	# Initialize status label
+	status_label.text = ""
+	status_label.visible = false
 	
 	# Host initialization
 	if multiplayer.is_server():
@@ -131,12 +138,12 @@ func on_peer_connected(id: int) -> void:
 	player_count += 1
 	player_ids[assigned_index] = id
 	ready_status[assigned_index] = false
-	
+
 	# Show the player's monican to everyone
 	if monicans.has(assigned_index):
 		monicans[assigned_index].show()
 		sync_monican_show.rpc(assigned_index)
-	
+
 	# Check if we already have a name for this player
 	if player_names.has(id):
 		# We already have their name, sync it to everyone
@@ -251,6 +258,12 @@ func sync_all_players(updated_player_ids: Dictionary, updated_ready_status: Dict
 		if player_names.has(network_id) and monicans.has(player_index):
 			var name_label = monicans[player_index].get_node("SubViewport/Control")
 			name_label.set_name_for_player(player_names[network_id])
+			
+			# Also update the ready status display
+			if ready_status.has(player_index):
+				name_label.check_player_ready(ready_status[player_index])
+			
+	
 
 func _on_ready_button_pressed() -> void:
 	var local_id = multiplayer.get_unique_id()
@@ -261,15 +274,22 @@ func _on_ready_button_pressed() -> void:
 		sync_ready_state.rpc(player_index, ready_status[player_index])
 		
 		if ready_status[player_index]:
-			$Camera3D/CanvasLayer/Control/Button.text = "Not Ready"
+			$Camera3D/CanvasLayer/Control/ready.text = "Not Ready"
 		else:
-			$Camera3D/CanvasLayer/Control/Button.text = "Ready"
+			$Camera3D/CanvasLayer/Control/ready.text = "Ready"
 		
 @rpc("any_peer", "call_local")
 func sync_ready_state(player_index: int, is_ready: bool) -> void:
 	if monicans.has(player_index):
 		var checkbox: Control = monicans[player_index].get_node("SubViewport/Control")
 		checkbox.check_player_ready(is_ready)
+	
+	ready_status[player_index] = is_ready
+	
+	# If we're the server, check if everyone is ready to start
+	if multiplayer.is_server() and !game_locked:
+		if check_all_ready():
+			lock_game_and_start()
 
 # Implementation for the exit button
 func _on_exit_pressed() -> void:
@@ -282,3 +302,69 @@ func _on_exit_pressed() -> void:
 	
 	# Return to the main menu or whatever scene should be next
 	get_tree().change_scene_to_file("res://Core/Scene/Multiplayer_Scene/multiplayer_handler.tscn")
+
+# Function to check if all players are ready
+func check_all_ready() -> bool:
+	# If no players, return false
+	if player_count == 0:
+		return false
+		
+	# Check if we have at least 2 players and all are ready
+	if player_count >= 2:
+		for index in ready_status:
+			if ready_status[index] == false:
+				return false
+		return true
+	return false
+
+# Function to lock the game and start countdown
+func lock_game_and_start():
+	if game_locked:
+		return
+		
+	if check_all_ready():
+		game_locked = true
+		
+		# Disable the ready button for everyone
+		ready_button.disabled = true
+		sync_lock_game.rpc(true)
+		
+		# Create and start a timer for countdown
+		start_timer = Timer.new()
+		start_timer.one_shot = true
+		start_timer.wait_time = 3.0
+		start_timer.connect("timeout", _on_start_timer_timeout)
+		add_child(start_timer)
+		start_timer.start()
+		
+		# Show countdown message
+		sync_game_starting.rpc()
+
+# Timer timeout function
+func _on_start_timer_timeout():
+	# Tell parent to start the game
+	
+	# If we're the server, sync this to all clients
+	if multiplayer.is_server():
+		sync_game_start.rpc()
+
+# RPC to sync game lock state
+@rpc("authority", "call_local")
+func sync_lock_game(locked: bool):
+	game_locked = locked
+	ready_button.disabled = locked
+
+# RPC to show "Game starting in 3..." message
+@rpc("authority", "call_local")
+func sync_game_starting():
+	status_label.text = "Game about to begin..."
+	status_label.visible = true
+
+# RPC to start the game on all clients
+@rpc("call_local","any_peer")
+func sync_game_start():
+	
+	var world = world_scene.instantiate()
+	get_parent().add_child(world)
+	get_parent().emit_signal("game_started")
+	queue_free()

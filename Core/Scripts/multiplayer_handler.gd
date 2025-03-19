@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 	# Get local IP address
 	ip_address = get_local_ipv4()
-	print("Local IP: ", ip_address)
+	
 	
 	# Set up server discovery
 	setup_server_discovery()
@@ -69,7 +69,7 @@ func _process(_delta: float) -> void:
 			if data_parts.size() >= 2:
 				var server_name = data_parts[0]
 				var player_count = data_parts[1]
-				print("Received broadcast from server: ", server_name, " at IP: ", server_ip, " with ", player_count, " players")
+				
 				
 				# Update or add to server list
 				var current_time = Time.get_ticks_msec() / 1000.0
@@ -83,7 +83,7 @@ func _process(_delta: float) -> void:
 					# Update UI
 					if control.has_method("update_server_in_list"):
 						control.update_server_in_list(server_ip, server_name, player_count)
-					print("Updated server: ", server_name, " (", server_ip, ") with ", player_count, " players")
+					
 				else:
 					# Add new server entry
 					server_list[server_ip] = {
@@ -94,7 +94,7 @@ func _process(_delta: float) -> void:
 					
 					# Add server to UI list
 					control.add_server_to_server_list(server_name, server_ip)
-					print("Added server to list: ", server_name, " (", server_ip, ") with ", player_count, " players")
+					
 		
 		# Clean up servers that haven't broadcast in a while
 		clean_server_list()
@@ -141,7 +141,7 @@ func broadcast_server_presence() -> void:
 	if err != OK:
 		push_error("Failed to broadcast server presence: " + str(err))
 	else:
-		print("Broadcasting server: ", server_name, " with ", player_count, " players")
+		pass
 
 # Function to start a server (host)
 func host(port: int = 2222, max_players: int = 4) -> void:
