@@ -36,6 +36,7 @@ func _ready() -> void:
 
 func setup_server_discovery() -> void:
 	# Close any existing UDP connection
+	
 	udp_peer.close()
 	
 	# Bind to the discovery port to listen for broadcasts
@@ -142,6 +143,8 @@ func broadcast_server_presence() -> void:
 		push_error("Failed to broadcast server presence: " + str(err))
 	else:
 		pass
+		
+	await get_tree().create_timer(6).timeout
 
 # Function to start a server (host)
 func host(port: int = 2222, max_players: int = 4) -> void:
@@ -232,3 +235,8 @@ func _on_connected_to_peer(id):
 func _on_queue_changed(queue_string: String) -> void:
 	if control:
 		control.change_queue_text(queue_string)
+		
+		
+func on_refresh_button()->void:
+
+	setup_server_discovery()

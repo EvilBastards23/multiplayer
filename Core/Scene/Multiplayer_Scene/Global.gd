@@ -3,8 +3,10 @@ extends Node
 # Dictionary to store player instances, keyed by their unique ID
 var players: Dictionary = {}
 
+
+
 func _ready() -> void:
-	print("Global singleton ready")
+	pass
 	
 
 # Initialize players from parent node

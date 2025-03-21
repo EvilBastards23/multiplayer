@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://blvgkbr1h1vyv"]
+[gd_scene load_steps=22 format=3 uid="uid://blvgkbr1h1vyv"]
 
 [ext_resource type="FontFile" uid="uid://bf1qwda2f45ra" path="res://UI_elemenets/Jua-Regular.ttf" id="1_62e2m"]
 [ext_resource type="Script" uid="uid://cgm8ni8dfyp73" path="res://control.gd" id="1_kbped"]
@@ -25,7 +25,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_fj5cn"]
-font_size = 55
+font_size = 49
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_qtu10"]
 
@@ -37,6 +37,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_6a6wx"]
+font = ExtResource("1_62e2m")
 font_size = 30
 font_color = Color(0.741176, 0.741176, 0.741176, 1)
 
@@ -77,6 +78,12 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_0ytqx"]
 font_size = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fj5cn"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iy58a"]
+font_size = 35
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sky72"]
 border_width_left = 5
@@ -152,7 +159,7 @@ vertical_alignment = 1
 autowrap_mode = 1
 clip_text = true
 
-[node name="Button" type="Button" parent="Panel/server_list_panel/Panel"]
+[node name="refresh" type="Button" parent="Panel/server_list_panel/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.006
@@ -259,18 +266,20 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ee4bf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/server_list_panel2"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 31.0
-offset_top = 15.0
-offset_right = -35.0
-offset_bottom = -19.0
+anchors_preset = -1
+anchor_left = 0.023
+anchor_top = 0.031
+anchor_right = 0.978
+anchor_bottom = 0.946
+offset_left = -0.103586
+offset_top = -0.0484154
+offset_right = -0.100281
+offset_bottom = -0.0258331
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 17
 
 [node name="Label" type="Label" parent="Panel/server_list_panel2/VBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.1
@@ -282,7 +291,6 @@ autowrap_mode = 1
 
 [node name="LineEdit" type="LineEdit" parent="Panel/server_list_panel2/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 2
 theme_override_fonts/font = ExtResource("1_62e2m")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_eh0v1")
@@ -331,9 +339,9 @@ layout_mode = 2
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.1
 theme_override_fonts/font = ExtResource("1_62e2m")
-theme_override_styles/normal = SubResource("StyleBoxFlat_0ytqx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fj5cn")
 text = "Server name:"
-label_settings = SubResource("LabelSettings_pxugv")
+label_settings = SubResource("LabelSettings_iy58a")
 autowrap_mode = 1
 
 [node name="LineEdit" type="LineEdit" parent="Panel/server_host_panel/VBoxContainer"]

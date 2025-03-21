@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://1n834akm4ge0"]
+[gd_scene load_steps=12 format=3 uid="uid://1n834akm4ge0"]
 
 [ext_resource type="Script" uid="uid://dgw2rh7wjhbwr" path="res://Core/Scene/Multiplayer_Scene/world.gd" id="1_htd8l"]
 [ext_resource type="PackedScene" uid="uid://b8a1x0sctkhh2" path="res://Core/Scene/Game_Scene/map.tscn" id="1_qq0jb"]
@@ -6,12 +6,24 @@
 [ext_resource type="PackedScene" uid="uid://qnpjdxarwyo" path="res://Core/Scene/Game_Scene/health_potion.tscn" id="3_xutfo"]
 [ext_resource type="PackedScene" uid="uid://ldwixym0udet" path="res://Core/Scene/Game_Scene/speed_potion.tscn" id="4_0e6bn"]
 [ext_resource type="Script" uid="uid://d2bpa6ukv0sgi" path="res://Core/Scene/Multiplayer_Scene/Global.gd" id="5_aptbh"]
+[ext_resource type="Script" uid="uid://ijuw6o476qtj" path="res://Core/Scripts/loot_generator.gd" id="7_aptbh"]
+[ext_resource type="Script" uid="uid://d2uv1hnkvg0oy" path="res://Core/Scripts/spawner.gd" id="8_2053m"]
+[ext_resource type="PackedScene" uid="uid://cy6bfrn7ujx0m" path="res://Core/Scene/Game_Scene/enemy_type_1.tscn" id="9_kwd20"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2053m"]
 size = Vector3(6.62585, 1, 5.34387)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_lr6k8"]
+size = Vector3(94.4751, 6.82898, 86.6473)
+
 [node name="world" type="Node3D"]
 script = ExtResource("1_htd8l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.585062, 0.585062, 0.585062, 1)
+light_indirect_energy = 3.263
+shadow_enabled = true
 
 [node name="map" parent="." instance=ExtResource("1_qq0jb")]
 script = null
@@ -67,3 +79,21 @@ shape = SubResource("BoxShape3D_2053m")
 
 [node name="Global" type="Node" parent="."]
 script = ExtResource("5_aptbh")
+
+[node name="loot_generator" type="Node" parent="."]
+script = ExtResource("7_aptbh")
+
+[node name="spawner" type="Node" parent="."]
+script = ExtResource("8_2053m")
+enemy_scene = ExtResource("9_kwd20")
+spawn_interval = 100.0
+max_enemies = 1
+min_enemies = 1
+
+[node name="spawner area" type="Area3D" parent="spawner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawner/spawner area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.502197, 31.85, -0.490051)
+shape = SubResource("BoxShape3D_lr6k8")
+
+[node name="SpawnTimer" type="Timer" parent="spawner"]

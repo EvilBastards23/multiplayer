@@ -1,12 +1,12 @@
-extends Node3D
+extends Node
 
 @export var enemy_scene: PackedScene
 @export var spawn_interval: float = 5.0
 @export var max_enemies: int = 10
 @export_range(0, 10) var min_enemies: int = 10  # Minimum enemies to maintain
 
-@onready var spawn_area: Area3D = $Area3D
-@onready var collision_shape: CollisionShape3D = $Area3D/CollisionShape3D
+@onready var spawn_area: Area3D = $"spawner area"
+@onready var collision_shape: CollisionShape3D = $"spawner area/CollisionShape3D"
 @onready var spawn_timer: Timer = $SpawnTimer
 
 var active_enemies: Array[Node] = []
@@ -46,9 +46,13 @@ func spawn_enemy() -> void:
 	active_enemies.append(enemy)
 	
 	# Connect to enemy's death
-	if enemy.has_node("HealthComponent"):
-		enemy.get_node("HealthComponent").died.connect(
-			func(): active_enemies.erase(enemy)
+	if enemy.has_node("health_component"):
+		enemy.get_node("health_component").died.connect(
+			func():
+				if not enemy.is_dead:
+					get_parent().emit_signal("handle_mob_death",enemy.position)
+					active_enemies.erase(enemy)
+					enemy.is_dead = true
 		)
 	
 	# Add to scene

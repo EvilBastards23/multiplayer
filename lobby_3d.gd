@@ -209,7 +209,7 @@ func sync_queue_change(number: int) -> void:
 	
 @rpc("any_peer", "call_local")
 func sync_player_name(player_index, player_name):
-	# Store the name in player_names dictionary for all clients
+	# Store the name in player_dddddnames dictionary for all clients
 	if player_ids.has(player_index):
 		var network_id = player_ids[player_index]
 		player_names[network_id] = player_name

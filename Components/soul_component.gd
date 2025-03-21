@@ -6,6 +6,8 @@ signal change_label
 
 func _ready() -> void:
 	owner_name = get_parent().name
+	generate_soul_value()
+	
 
 func add_soul(amount:int)->void:
 	soul_value += amount
@@ -24,5 +26,8 @@ func drop_soul()->void:
 		
 		soul_value = 0
 		emit_signal("change_label",soul_value)
-		
+
+func generate_soul_value()->void:
+	if get_parent().is_in_group("Mob"):
+		soul_value = randi_range(0,20)
 	

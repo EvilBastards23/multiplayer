@@ -70,6 +70,7 @@ func handle_death() -> void:
 			parent.get_node("CollisionShape3D").call_deferred("set_disabled", true)
 			parent.camera.target = parent.get_parent().get_camera2().target
 			parent.soul_component.drop_soul()
+			parent.position = Vector3(0,100,0)
 			
 		# If we're on a client, we can queue free immediately
 		else:
@@ -77,4 +78,10 @@ func handle_death() -> void:
 			parent.hide()
 			parent.get_node("CollisionShape3D").call_deferred("set_disabled", true)
 			#parent.camera.target = parent.get_parent().get_camera1().target
+	elif parent.is_in_group("Mob"):
+		
+		emit_signal("died")
+		
+		parent.queue_free()
+		
 			

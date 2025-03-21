@@ -4,11 +4,12 @@ extends CharacterBody3D
 var SPEED:int = 10
 const JUMP_VELOCITY = 4.5
 var is_dead:bool = false
+const MOB_KNOCKBACK_FORCE = 80.0  # Force to push mobs away when they're hit
 
 # Exported variable for camera reference
 @export var camera: Camera3D
 @onready var health_component: Node = $health_component
-@onready var healt_bar: Control = $healt_bar
+@onready var healt_bar: Node3D = $healt_bar
 @onready var buff_component: BuffComponent = $buff_component
 @onready var inventory_component: Node = $inventory_component
 @onready var item_ui: Control = $CanvasLayer/item_ui
@@ -26,11 +27,10 @@ func _enter_tree() -> void:
 
 # Called when the node is ready
 func _ready() -> void:
-	health_component.current_hp = 50
+	
 	if is_multiplayer_authority():
 		camera = get_parent().get_camera1()
 		camera.target = self
-	
 	else:
 		camera = get_parent().get_camera2()
 		camera.target = self
@@ -119,7 +119,12 @@ func take_damage(body)->void:
 	if body.is_in_group("bullet"):
 		$health_component.take_damage(body.damage)
 		body.queue_free()
+	if body.is_in_group("Mob"):
+		$health_component.take_damage(body.damage)
+		body.knock_back()
 		
+
+
 
 func spawn(area: Area3D):
 	is_dead = false
@@ -148,7 +153,3 @@ func spawn(area: Area3D):
 	
 	# Set camera to follow this character
 	camera.target = self
-	
-
-
-	

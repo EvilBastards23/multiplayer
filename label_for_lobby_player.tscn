@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://di8mktcjnwwqn" path="res://UI_elemenets/checkbox-svgrepo-com(2).svg" id="3_332gl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1pnb6"]
-content_margin_left = 10.0
+content_margin_left = 25.0
 content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
@@ -41,6 +41,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_1pnb6")
+text = "asdsd"
 label_settings = SubResource("LabelSettings_332gl")
 vertical_alignment = 1
 autowrap_mode = 3

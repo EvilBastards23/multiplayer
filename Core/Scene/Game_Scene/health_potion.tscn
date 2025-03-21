@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c0mwrd4wd4unt" path="res://Core/Scripts/item_consume.gd" id="1_ftv4n"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w7oho"]
-radius = 0.62959
+radius = 0.702027
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2topp"]
 transparency = 1
@@ -140,6 +140,7 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.823688, 0)
 shape = SubResource("SphereShape3D_w7oho")
 
 [node name="Circle" type="MeshInstance3D" parent="."]

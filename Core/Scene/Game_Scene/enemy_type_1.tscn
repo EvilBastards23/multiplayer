@@ -500,7 +500,9 @@ _data = {
 &"take_off": SubResource("Animation_xdkad")
 }
 
-[node name="enemy_type_1" type="CharacterBody3D"]
+[node name="enemy_type_1" type="CharacterBody3D" groups=["Mob"]]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_xblyy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -516,6 +518,7 @@ replication_config = SubResource("SceneReplicationConfig_na7qv")
 script = ExtResource("2_ao77u")
 
 [node name="healt_bar" parent="." node_paths=PackedStringArray("player", "health_component") instance=ExtResource("3_8mhog")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.63085, 0)
 player = NodePath("..")
 health_component = NodePath("../health_component")
 
@@ -536,7 +539,7 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, 5.32907e-15, 2.38419e-07, -3.67631e-08, 0.98804, 0.154195, -2.35567e-07, -0.154195, 0.98804, -0.031449, -0.77397, 0.130689)
 bones/0/enabled = true
 bones/0/position = Vector3(-0.031449, 0.089057, 0.130689)
-bones/0/rotation = Quaternion(-0.0249853, 0.160305, -0.0252179, 0.986429)
+bones/0/rotation = Quaternion(-0.0153138, 0.0804425, -0.12011, 0.989378)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Bone.001"
 bones/1/parent = 0
@@ -557,7 +560,7 @@ bones/3/parent = 2
 bones/3/rest = Transform3D(0.118333, -0.991784, -0.0485957, 0.991784, 0.115655, 0.0546652, -0.0485958, -0.0546652, 0.997321, -3.25963e-09, 0.392216, -2.6077e-08)
 bones/3/enabled = true
 bones/3/position = Vector3(-3.25963e-09, 0.392216, -2.6077e-08)
-bones/3/rotation = Quaternion(-0.0365958, 6.46697e-09, 0.663953, 0.746879)
+bones/3/rotation = Quaternion(-0.0365958, 6.35584e-09, 0.663953, 0.746879)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Bone.010"
 bones/4/parent = 1
@@ -571,14 +574,14 @@ bones/5/parent = 4
 bones/5/rest = Transform3D(0.320885, 0.935073, -0.150567, -0.935073, 0.287502, -0.207316, -0.150567, 0.207316, 0.966618, 2.42144e-08, 0.411057, 7.45058e-09)
 bones/5/enabled = true
 bones/5/position = Vector3(2.42144e-08, 0.411057, 7.45058e-09)
-bones/5/rotation = Quaternion(0.129195, 1.20599e-08, -0.582716, 0.802341)
+bones/5/rotation = Quaternion(0.129195, 4.57454e-09, -0.582716, 0.802341)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "Bone.012"
 bones/6/parent = 5
 bones/6/rest = Transform3D(0.839736, 0.541831, -0.0355324, -0.541831, 0.831858, -0.12013, -0.0355322, 0.12013, 0.992122, 4.84288e-08, 0.374706, -4.65661e-09)
 bones/6/enabled = true
 bones/6/position = Vector3(4.84288e-08, 0.374706, -4.65661e-09)
-bones/6/rotation = Quaternion(0.0627611, -7.3556e-08, -0.283076, 0.957042)
+bones/6/rotation = Quaternion(0.0627611, -7.29785e-08, -0.283076, 0.957042)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "Bone.002"
 bones/7/parent = 0

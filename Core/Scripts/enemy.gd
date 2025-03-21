@@ -4,10 +4,10 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const MAX_TARGET_SWITCH_TIME = 2.0
 const TARGET_SWITCH_THRESHOLD = 1.0
-
+var is_dead:bool = false
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var health_component: Node = $health_component
-
+var damage:int = 25
 
 var current_target: Node3D = null
 var time_since_target_switch: float = 0.0
@@ -27,14 +27,29 @@ func _initialize_navigation() -> void:
 	await get_tree().physics_frame
 	find_closest_player()
 
+# Add a knockback timer
+var knockback_timer: float = 0.0
+const KNOCKBACK_DURATION: float = 0.3  # Adjust as needed
+
 func _physics_process(delta: float) -> void:
 	# Apply gravity when not on floor
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	_handle_target_switching(delta)
-	_update_movement()
+	# Only update movement if not in knockback state
+	if knockback_timer <= 0:
+		_handle_target_switching(delta)
+		_update_movement()
+	else:
+		knockback_timer -= delta
+		
 	move_and_slide()
+
+func knock_back() -> void:
+	var knockback_direction: Vector3 = global_transform.basis.z
+	knockback_direction.y = 0.3  # Add slight upward force for realism
+	velocity += knockback_direction * 18 # Adjust strength as needed
+	knockback_timer = KNOCKBACK_DURATION  # Start knockback timer
 
 func _handle_target_switching(delta: float) -> void:
 	time_since_target_switch += delta
@@ -86,8 +101,13 @@ func find_closest_player() -> void:
 		current_target = closest_player
 
 func take_damage(body: Node) -> void:
+	
+	
 	if not body.is_in_group("bullet"):
 		return
 		
 	health_component.take_damage(body.damage)
 	body.queue_free()
+
+
+	

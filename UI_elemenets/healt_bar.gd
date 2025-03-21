@@ -1,7 +1,7 @@
-extends Control
+extends Node3D
 
 @export var player: Node3D  # Assign the player in the editor
-@onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
+@onready var texture_progress_bar: TextureProgressBar = $SubViewport/Control/TextureProgressBar
 @export var health_component: Node  # Assign the HealthComponent in the editor
 
 
@@ -22,7 +22,7 @@ func _process(_delta: float) -> void:
 		if camera:
 			# Convert player's world position to screen position
 			var screen_pos := camera.unproject_position(player.global_transform.origin + Vector3(0, 2, 0))  # Adjust Y offset
-			position = screen_pos - size / 2  # Center the health bar
+			
 			
 func update_hp_bar()->void:
 	texture_progress_bar.value = health_component.current_hp

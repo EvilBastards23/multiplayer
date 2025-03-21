@@ -11,6 +11,7 @@ var server_rows = {}
 func _ready() -> void:
 	parent = $".."
 	$Button.connect("pressed",_on_start_pressed)
+	$Panel/server_list_panel/Panel/refresh.connect("pressed",parent.on_refresh_button)
 
 func add_server_to_server_list(server_name: String, server_ip: String):
 	# Skip if this server is already in our list

@@ -1,12 +1,62 @@
-[gd_scene load_steps=5 format=3 uid="uid://csmmswa1clnn3"]
+[gd_scene load_steps=9 format=3 uid="uid://csmmswa1clnn3"]
 
 [ext_resource type="Script" uid="uid://y0juhg1g04ne" path="res://lobby_3d.gd" id="1_6vany"]
 [ext_resource type="PackedScene" uid="uid://bio5t6y3ng8po" path="res://monican.tscn" id="2_6vany"]
 [ext_resource type="FontFile" uid="uid://bf1qwda2f45ra" path="res://UI_elemenets/Jua-Regular.ttf" id="2_n8hlp"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8hlp"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.601223, 0.601223, 0.601223, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+shadow_color = Color(0.372549, 0.372549, 0.372549, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(3, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f04m2"]
+bg_color = Color(0.728822, 0.728822, 0.728822, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.473976, 0.473976, 0.473975, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.374139, 0.374139, 0.374139, 0.6)
+shadow_size = 5
+shadow_offset = Vector2(3, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnov8"]
+bg_color = Color(0.729412, 0.729412, 0.729412, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.47451, 0.47451, 0.47451, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.372549, 0.372549, 0.372549, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(3, 2)
+
 [sub_resource type="LabelSettings" id="LabelSettings_f04m2"]
 font = ExtResource("2_n8hlp")
-font_size = 44
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_n8hlp"]
+viewport_path = NodePath("SubViewport")
 
 [node name="Lobby" type="Node3D"]
 script = ExtResource("1_6vany")
@@ -18,38 +68,58 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.511, 0.001)
 
 [node name="Control" type="Control" parent="Camera3D/CanvasLayer"]
 layout_mode = 3
-anchor_right = 0.278
-anchor_bottom = 0.294
-offset_right = 0.239929
-offset_bottom = -0.519989
+anchor_left = 0.012
+anchor_top = 0.008
+anchor_right = 0.243
+anchor_bottom = 0.301
+offset_left = 0.176
+offset_top = -0.184
+offset_right = 0.0639954
+offset_bottom = -37.048
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Camera3D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n8hlp")
 
 [node name="ready" type="Button" parent="Camera3D/CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.131
 anchor_top = 0.237
-anchor_right = 0.768
-anchor_bottom = 0.5
-offset_left = 0.0150299
-offset_top = -0.0281067
-offset_right = -0.140869
-offset_bottom = -0.996002
-text = "Ready
-"
+anchor_right = 0.835
+anchor_bottom = 0.495
+offset_left = 0.442001
+offset_top = -0.0299988
+offset_right = -0.030014
+offset_bottom = -0.0500031
+theme_override_colors/font_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+theme_override_fonts/font = ExtResource("2_n8hlp")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_f04m2")
+text = "READY"
 
 [node name="exit" type="Button" parent="Camera3D/CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.131
-anchor_top = 0.611
-anchor_right = 0.771
-anchor_bottom = 0.868
-offset_left = 0.0150299
-offset_top = -0.0851135
-offset_right = -0.102356
-offset_bottom = 0.0869293
+anchor_left = 0.229
+anchor_top = 0.621
+anchor_right = 0.726
+anchor_bottom = 0.81
+offset_left = 0.0859947
+offset_top = -0.0130081
+offset_right = -0.115997
+offset_bottom = 0.0699921
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_n8hlp")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_tnov8")
 text = "Exit
 "
 
@@ -57,7 +127,7 @@ text = "Exit
 layout_mode = 3
 anchor_right = 0.278
 anchor_bottom = 0.294
-offset_left = 744.0
+offset_left = 627.0
 offset_right = 830.744
 offset_bottom = -71.512
 grow_horizontal = 2
@@ -70,26 +140,41 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Game begin in 3,2,1"
+text = "Gma"
 label_settings = SubResource("LabelSettings_f04m2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_indirect_energy = 5.364
 
 [node name="monican2" parent="." instance=ExtResource("2_6vany")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167502, -0.69083, -5.28264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.381615, -2.33045, -5.01094)
 visible = false
 
 [node name="monican1" parent="." instance=ExtResource("2_6vany")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45819, -0.69083, -5.28264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90907, -2.33045, -5.01094)
+visible = false
 
 [node name="monican3" parent="." instance=ExtResource("2_6vany")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2304, -0.69083, -5.28264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77952, -2.33045, -5.01094)
 visible = false
 
 [node name="monican4" parent="." instance=ExtResource("2_6vany")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52818, -0.69083, -5.28264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0773, -2.33045, -5.01094)
 visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(4.84877, 0, 0, 0, 2.3681, 0, 0, 0, 1, 0, 0, -6.77185)
+texture = SubResource("ViewportTexture_n8hlp")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="Camera3D/CanvasLayer/Control/exit" to="." method="_on_exit_pressed"]
