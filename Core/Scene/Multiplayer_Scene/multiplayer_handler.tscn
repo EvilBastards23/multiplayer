@@ -39,6 +39,7 @@ text = "spawn"
 [node name="Control" parent="." instance=ExtResource("3_kk3jt")]
 
 [node name="Button" type="Button" parent="Control"]
+visible = false
 layout_mode = 0
 offset_right = 792.0
 offset_bottom = 83.0
