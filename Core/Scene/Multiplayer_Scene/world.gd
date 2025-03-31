@@ -4,7 +4,7 @@ extends Node3D
 @onready var camera_2: Camera3D = $camera2
 
 
-@onready var loot_generator: Node = $loot_generator
+
 
 
 var player_scene: PackedScene = preload("res://Core/Scene/Game_Scene/player.tscn")
@@ -14,7 +14,7 @@ signal handle_mob_death
 
 func _ready() -> void:
 	get_parent().connect("game_started", on_game_started)
-	handle_mob_death.connect(handling_mob_death)
+
 
 @rpc("any_peer")
 func add_player(id: int) -> void:
@@ -62,5 +62,3 @@ func on_game_started() -> void:
 		# If we're a client, tell the server to add us
 		add_player.rpc_id(1, multiplayer.get_unique_id())
 	
-func handling_mob_death(position:Vector3):
-	loot_generator.spawn_loot.rpc(position)

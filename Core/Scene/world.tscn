@@ -1,12 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://1n834akm4ge0"]
+[gd_scene load_steps=9 format=3 uid="uid://1n834akm4ge0"]
 
 [ext_resource type="Script" uid="uid://dgw2rh7wjhbwr" path="res://Core/Scene/Multiplayer_Scene/world.gd" id="1_htd8l"]
 [ext_resource type="PackedScene" uid="uid://b8a1x0sctkhh2" path="res://Core/Scene/Game_Scene/map.tscn" id="1_qq0jb"]
 [ext_resource type="Script" uid="uid://bq0kcmt0edy04" path="res://Core/Scripts/camera_3d.gd" id="2_htd8l"]
-[ext_resource type="PackedScene" uid="uid://qnpjdxarwyo" path="res://Core/Scene/Game_Scene/health_potion.tscn" id="3_xutfo"]
-[ext_resource type="PackedScene" uid="uid://ldwixym0udet" path="res://Core/Scene/Game_Scene/speed_potion.tscn" id="4_0e6bn"]
 [ext_resource type="Script" uid="uid://d2bpa6ukv0sgi" path="res://Core/Scene/Multiplayer_Scene/Global.gd" id="5_aptbh"]
-[ext_resource type="Script" uid="uid://ijuw6o476qtj" path="res://Core/Scripts/loot_generator.gd" id="7_aptbh"]
 [ext_resource type="Script" uid="uid://d2uv1hnkvg0oy" path="res://Core/Scripts/spawner.gd" id="8_2053m"]
 [ext_resource type="PackedScene" uid="uid://cy6bfrn7ujx0m" path="res://Core/Scene/Game_Scene/enemy_type_1.tscn" id="9_kwd20"]
 
@@ -34,9 +31,10 @@ script = null
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.34958, 7.33138, 32.6566)
 script = ExtResource("2_htd8l")
 follow_speed = 6.0
-height = 12.0
+height = 9.0
 distance = 7.0
-angle = -30.0
+angle = 35.0
+smoothing = false
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://d2fdrmkwh2jc5")
@@ -49,27 +47,6 @@ height = 12.0
 distance = 7.0
 angle = -30.0
 
-[node name="HealthPotion2" parent="." instance=ExtResource("3_xutfo")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1.26574, 1.1403, -6.29859)
-
-[node name="HealthPotion" parent="." instance=ExtResource("3_xutfo")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -4.6279, 0.817366, 3.93764)
-
-[node name="SpeedPotion" parent="." instance=ExtResource("4_0e6bn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.57782, 0.821184, -1.4359)
-
-[node name="SpeedPotion2" parent="." instance=ExtResource("4_0e6bn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2427, 0.973165, 6.40697)
-
-[node name="SpeedPotion3" parent="." instance=ExtResource("4_0e6bn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.640571, 1.27746, 5.48081)
-
-[node name="SpeedPotion4" parent="." instance=ExtResource("4_0e6bn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73413, 1.28316, 6.32418)
-
-[node name="SpeedPotion5" parent="." instance=ExtResource("4_0e6bn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4321, 0.0930958, 16.0277)
-
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.76551, 32.4819)
 
@@ -80,15 +57,11 @@ shape = SubResource("BoxShape3D_2053m")
 [node name="Global" type="Node" parent="."]
 script = ExtResource("5_aptbh")
 
-[node name="loot_generator" type="Node" parent="."]
-script = ExtResource("7_aptbh")
-
 [node name="spawner" type="Node" parent="."]
 script = ExtResource("8_2053m")
 enemy_scene = ExtResource("9_kwd20")
-spawn_interval = 100.0
-max_enemies = 1
-min_enemies = 1
+spawn_interval = 10.0
+min_enemies = 5
 
 [node name="spawner area" type="Area3D" parent="spawner"]
 

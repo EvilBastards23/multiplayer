@@ -4,7 +4,7 @@ extends Node
 @export var bolder_scene: PackedScene  # Reference to the boulder scene
 
 var player: CharacterBody3D  # The player character to get facing direction
-var damage: int = 20
+var damage: int = 100
 
 @export var attack_cooldown: float = 0.5
 var can_attack: bool = true

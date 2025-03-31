@@ -517,9 +517,8 @@ replication_config = SubResource("SceneReplicationConfig_na7qv")
 [node name="health_component" type="Node" parent="."]
 script = ExtResource("2_ao77u")
 
-[node name="healt_bar" parent="." node_paths=PackedStringArray("player", "health_component") instance=ExtResource("3_8mhog")]
+[node name="healt_bar" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_8mhog")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.63085, 0)
-player = NodePath("..")
 health_component = NodePath("../health_component")
 
 [node name="hit_box" type="Area3D" parent="."]

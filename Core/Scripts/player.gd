@@ -11,12 +11,12 @@ const MOB_KNOCKBACK_FORCE = 80.0  # Force to push mobs away when they're hit
 @onready var health_component: Node = $health_component
 @onready var healt_bar: Node3D = $healt_bar
 @onready var buff_component: BuffComponent = $buff_component
-@onready var inventory_component: Node = $inventory_component
-@onready var item_ui: Control = $CanvasLayer/item_ui
-@onready var soul_component: Node = $soul_component
+
+
+
 @onready var level_menu: Control = $CanvasLayer/level_menu
 @onready var level_component: Node = $level_component
-@onready var soul_ui: Control = $CanvasLayer/soul_ui
+
 
 
 

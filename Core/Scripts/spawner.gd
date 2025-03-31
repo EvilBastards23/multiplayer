@@ -50,11 +50,11 @@ func spawn_enemy() -> void:
 		enemy.get_node("health_component").died.connect(
 			func():
 				if not enemy.is_dead:
-					get_parent().emit_signal("handle_mob_death",enemy.position)
+				
 					active_enemies.erase(enemy)
 					enemy.is_dead = true
 		)
-	
+
 	# Add to scene
 	add_child(enemy, true)
 
